@@ -2,23 +2,32 @@ package vn.edu.ngochandev.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.ngochandev.dto.request.UserCreationRequest;
 import vn.edu.ngochandev.dto.response.UserResponse;
+import vn.edu.ngochandev.service.UserService;
 
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
 @Tag(name = "User Controller")
 public class UserController {
+    private final UserService userService;
+
+    @PostMapping()
+    public ResponseEntity<Long> createUser(@RequestBody UserCreationRequest req){
+
+        return new ResponseEntity<>(userService.saveUser(req), HttpStatus.CREATED);
+    }
+
     @Operation(summary = "Mockup API for User", description = "Mo ta chi tiet")
     @GetMapping()
     public ResponseEntity<?> getUser(
@@ -33,7 +42,7 @@ public class UserController {
                 .email("123@gmail.com")
                 .fullName("Nguyen Ngoc Han")
                 .gender("Male")
-                .phone("123456789")
+                .phoneNumber("123456789")
                 .userName("123")
                 .userStatus("ACTIVE")
                 .build());
