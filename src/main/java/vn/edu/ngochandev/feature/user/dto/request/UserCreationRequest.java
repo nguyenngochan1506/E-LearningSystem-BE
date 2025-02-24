@@ -1,4 +1,4 @@
-package vn.edu.ngochandev.dto.request;
+package vn.edu.ngochandev.feature.user.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

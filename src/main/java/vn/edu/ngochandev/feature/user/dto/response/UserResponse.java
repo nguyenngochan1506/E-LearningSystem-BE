@@ -1,4 +1,4 @@
-package vn.edu.ngochandev.dto.response;
+package vn.edu.ngochandev.feature.user.dto.response;
 
 import lombok.*;
 

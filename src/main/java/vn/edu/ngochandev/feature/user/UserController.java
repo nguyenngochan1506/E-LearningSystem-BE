@@ -1,4 +1,4 @@
-package vn.edu.ngochandev.controller;
+package vn.edu.ngochandev.feature.user;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -6,9 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vn.edu.ngochandev.dto.request.UserCreationRequest;
-import vn.edu.ngochandev.dto.response.UserResponse;
-import vn.edu.ngochandev.service.UserService;
+import vn.edu.ngochandev.feature.user.dto.request.UserCreationRequest;
+import vn.edu.ngochandev.feature.user.dto.response.UserResponse;
 
 import java.time.LocalDate;
 import java.util.HashMap;

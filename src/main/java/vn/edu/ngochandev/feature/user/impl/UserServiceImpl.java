@@ -1,17 +1,17 @@
-package vn.edu.ngochandev.service.impl;
+package vn.edu.ngochandev.feature.user.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vn.edu.ngochandev.common.UserStatus;
-import vn.edu.ngochandev.dto.request.UserChangePasswordRequest;
-import vn.edu.ngochandev.dto.request.UserCreationRequest;
-import vn.edu.ngochandev.dto.request.UserUpdateRequest;
-import vn.edu.ngochandev.dto.response.UserResponse;
-import vn.edu.ngochandev.entities.UserEntity;
-import vn.edu.ngochandev.repository.UserRepository;
-import vn.edu.ngochandev.service.UserService;
+import vn.edu.ngochandev.feature.user.dto.request.UserChangePasswordRequest;
+import vn.edu.ngochandev.feature.user.dto.request.UserCreationRequest;
+import vn.edu.ngochandev.feature.user.dto.request.UserUpdateRequest;
+import vn.edu.ngochandev.feature.user.dto.response.UserResponse;
+import vn.edu.ngochandev.feature.user.UserEntity;
+import vn.edu.ngochandev.feature.user.UserRepository;
+import vn.edu.ngochandev.feature.user.UserService;
 
 import java.util.List;
 

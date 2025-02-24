@@ -1,10 +1,10 @@
-package vn.edu.ngochandev.service;
+package vn.edu.ngochandev.feature.user;
 
 
-import vn.edu.ngochandev.dto.request.UserChangePasswordRequest;
-import vn.edu.ngochandev.dto.request.UserCreationRequest;
-import vn.edu.ngochandev.dto.request.UserUpdateRequest;
-import vn.edu.ngochandev.dto.response.UserResponse;
+import vn.edu.ngochandev.feature.user.dto.request.UserChangePasswordRequest;
+import vn.edu.ngochandev.feature.user.dto.request.UserCreationRequest;
+import vn.edu.ngochandev.feature.user.dto.request.UserUpdateRequest;
+import vn.edu.ngochandev.feature.user.dto.response.UserResponse;
 
 import java.util.List;
 

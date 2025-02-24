@@ -1,4 +1,4 @@
-package vn.edu.ngochandev.entities;
+package vn.edu.ngochandev.common;
 
 import jakarta.persistence.*;
 import lombok.Getter;

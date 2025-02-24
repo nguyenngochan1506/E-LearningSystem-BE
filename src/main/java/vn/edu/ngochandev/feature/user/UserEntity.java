@@ -1,4 +1,4 @@
-package vn.edu.ngochandev.entities;
+package vn.edu.ngochandev.feature.user;
 
 
 import jakarta.persistence.*;
@@ -9,6 +9,7 @@ import org.hibernate.type.SqlTypes;
 import vn.edu.ngochandev.common.Gender;
 import vn.edu.ngochandev.common.UserStatus;
 import vn.edu.ngochandev.common.UserType;
+import vn.edu.ngochandev.common.BaseEntity;
 
 import java.time.LocalDate;
 
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 @Table(name = "tbl_user")
 @Getter
 @Setter
-public class UserEntity extends BaseEntity{
+public class UserEntity extends BaseEntity {
     @Column(name = "full_name", length = 255)
     private String fullName;
 
