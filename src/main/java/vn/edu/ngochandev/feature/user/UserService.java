@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserService {
 
     List<UserResponse> findAll();
-    UserResponse findById(Long id);
+    UserResponse getUserDetailById(Long id);
     UserResponse findByEmail(String email);
     UserResponse findByUsername(String username);
     Long saveUser(UserCreationRequest req);

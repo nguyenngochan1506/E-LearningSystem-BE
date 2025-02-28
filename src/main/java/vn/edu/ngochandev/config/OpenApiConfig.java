@@ -23,7 +23,7 @@ public class OpenApiConfig {
     public GroupedOpenApi publicApi(@Value("${openapi.service.api-docs}") String apiDocs) {
         return GroupedOpenApi.builder()
                 .group(apiDocs) // /v3/api-docs/backend-service
-                .packagesToScan("vn.edu.ngochandev.controller")
+                .packagesToScan("vn.edu.ngochandev.feature")
                 .build();
     }
     @Bean

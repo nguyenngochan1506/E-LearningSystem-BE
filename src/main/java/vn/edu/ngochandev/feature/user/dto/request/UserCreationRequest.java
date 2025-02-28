@@ -2,6 +2,7 @@ package vn.edu.ngochandev.feature.user.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import lombok.ToString;
 import vn.edu.ngochandev.common.Gender;
 import vn.edu.ngochandev.common.UserType;
 
@@ -9,6 +10,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter
+@ToString
 public class UserCreationRequest implements Serializable {
     private String fullName;
     private Gender gender;
@@ -17,4 +19,5 @@ public class UserCreationRequest implements Serializable {
     private String email;
     private String password;
     private UserType userType;
+    private String className;
 }

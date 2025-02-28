@@ -12,12 +12,17 @@ import vn.edu.ngochandev.common.UserType;
 import vn.edu.ngochandev.common.BaseEntity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_user")
 @Getter
 @Setter
 public class UserEntity extends BaseEntity {
+
+    @Column(name = "class_name", length = 50)
+    private String className;
+
     @Column(name = "full_name", length = 255)
     private String fullName;
 
@@ -51,4 +56,8 @@ public class UserEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     private UserType userType;
+
+    @Column(name = "last_login")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime lastLogin;
 }
