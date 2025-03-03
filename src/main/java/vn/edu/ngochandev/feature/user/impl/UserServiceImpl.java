@@ -35,9 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserPageResponse findAll(String keyword, String sort, int page, int size) {
-        if(StringUtils.hasLength(keyword)){
-            //call search method
-        }
+
         Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
 
         //Sort
@@ -53,10 +51,32 @@ public class UserServiceImpl implements UserService {
                 }
             }
         }
+        int pageNo = 0;
+        if(page > 0){
+            pageNo = page -1;
+        }
 
         //Pagging
-        Pageable pageable = PageRequest.of(page, size, Sort.by(order));
-        Page<UserEntity> userPage = userRepository.findAll(pageable);
+        Pageable pageable = PageRequest.of(pageNo, size, Sort.by(order));
+        Page<UserEntity> userPage;
+        if(StringUtils.hasLength(keyword)){
+            //call search method
+            keyword = "%"+keyword.toLowerCase()+"%";
+            userPage = userRepository.searchByKeyword(keyword, pageable);
+        }else{
+            userPage = userRepository.findAll(pageable);
+        }
+        return convertToUserPageResponse(page, size, userPage);
+    }
+
+    /**
+     * Convert Page<UserEntity> to UserPageResponse
+     * @param page: currentPage
+     * @param size: number of elements in db
+     * @param userPage: Page<UserEntity>
+     * @return UserPageResponse
+     */
+    private static UserPageResponse convertToUserPageResponse(int page, int size, Page<UserEntity> userPage) {
         //convert to userResponse
         List<UserResponse> userResponses = userPage.map(e -> UserResponse.builder()
                 .id(e.getId())
