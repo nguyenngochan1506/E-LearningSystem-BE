@@ -11,9 +11,6 @@ import vn.edu.ngochandev.feature.user.dto.request.UserCreationRequest;
 import vn.edu.ngochandev.feature.user.dto.request.UserUpdateRequest;
 import vn.edu.ngochandev.feature.user.dto.response.UserResponse;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -26,7 +23,7 @@ public class UserController {
     @Operation(summary = "Get user", description = "get a user info")
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserDetail(@PathVariable long id) {
-        return new ResponseEntity<UserResponse>(userService.getUserDetailById(id),HttpStatus.ACCEPTED);
+        return new ResponseEntity<UserResponse>(userService.getUserDetailById(id),HttpStatus.OK);
     }
 
     @Operation(summary = "Delete user", description = "delete a user")
@@ -58,25 +55,13 @@ public class UserController {
     @GetMapping()
     public ResponseEntity<?> getUser(
             @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String sort,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-//        Map<String, Object> res = new HashMap<>();
-//        List<UserResponse> list = List.of(UserResponse.builder()
-//                .id(1L)
-//                .dateOfBirth(LocalDate.of(2004,06,15))
-//                .email("123@gmail.com")
-//                .fullName("Nguyen Ngoc Han")
-//                .gender("Male")
-//                .phoneNumber("123456789")
-//                .userName("123")
-//                .userStatus("ACTIVE")
-//                .build());
-//        res.put("data", list);
-//        res.put("message", "OK");
-//        res.put("status", HttpStatus.OK.value());
-
-        return new ResponseEntity<>(null, HttpStatus.OK);
-
+        return new ResponseEntity<>(Map.of("status", HttpStatus.OK,
+                "message","list user",
+                "data", userService.findAll(keyword, sort, page, size)
+                ), HttpStatus.OK);
     }
 }

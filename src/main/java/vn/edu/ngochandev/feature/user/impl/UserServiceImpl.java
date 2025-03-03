@@ -2,20 +2,28 @@ package vn.edu.ngochandev.feature.user.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import vn.edu.ngochandev.common.UserStatus;
 import vn.edu.ngochandev.exception.ResourceNotFoundException;
 import vn.edu.ngochandev.feature.user.dto.request.UserChangePasswordRequest;
 import vn.edu.ngochandev.feature.user.dto.request.UserCreationRequest;
 import vn.edu.ngochandev.feature.user.dto.request.UserUpdateRequest;
+import vn.edu.ngochandev.feature.user.dto.response.UserPageResponse;
 import vn.edu.ngochandev.feature.user.dto.response.UserResponse;
 import vn.edu.ngochandev.feature.user.UserEntity;
 import vn.edu.ngochandev.feature.user.UserRepository;
 import vn.edu.ngochandev.feature.user.UserService;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @Slf4j(topic = "USER-SERVICE")
@@ -26,8 +34,48 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public List<UserResponse> findAll() {
-        return List.of();
+    public UserPageResponse findAll(String keyword, String sort, int page, int size) {
+        if(StringUtils.hasLength(keyword)){
+            //call search method
+        }
+        Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
+
+        //Sort
+        if(StringUtils.hasLength(sort)){
+            Pattern pattern = Pattern.compile("(\\w+?)(:)(.*)");//columName:asc|desc
+            Matcher matcher = pattern.matcher(sort);
+            if(matcher.find()){
+                String column = matcher.group(1);
+                if(matcher.group(3).equalsIgnoreCase("asc")){
+                    order = new Sort.Order(Sort.Direction.ASC, column);
+                }else {
+                    order = new Sort.Order(Sort.Direction.DESC, column);
+                }
+            }
+        }
+
+        //Pagging
+        Pageable pageable = PageRequest.of(page, size, Sort.by(order));
+        Page<UserEntity> userPage = userRepository.findAll(pageable);
+        //convert to userResponse
+        List<UserResponse> userResponses = userPage.map(e -> UserResponse.builder()
+                .id(e.getId())
+                .phoneNumber(e.getPhoneNumber())
+                .email(e.getEmail())
+                .dateOfBirth(e.getDateOfBirth())
+                .userStatus(e.getStatus())
+                .fullName(e.getFullName())
+                .gender(e.getGender())
+                .userName(e.getUserName())
+                .build()).toList();
+
+        return UserPageResponse.builder()
+                .pageNumber(page)
+                .pageSize(size)
+                .totalPages(userPage.getTotalPages())
+                .totalElements(userPage.getTotalElements())
+                .users(userResponses)
+                .build();
     }
 
     @Override
