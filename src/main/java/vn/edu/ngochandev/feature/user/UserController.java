@@ -2,6 +2,8 @@ package vn.edu.ngochandev.feature.user;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,26 +24,26 @@ public class UserController {
 
     @Operation(summary = "Get user", description = "get a user info")
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUserDetail(@PathVariable long id) {
+    public ResponseEntity<UserResponse> getUserDetail(@PathVariable @Min(value = 1, message = "userId must be equals or greater than 1") Long id) {
         return new ResponseEntity<UserResponse>(userService.getUserDetailById(id),HttpStatus.OK);
     }
 
     @Operation(summary = "Delete user", description = "delete a user")
     @DeleteMapping("/del/{id}")
-    public ResponseEntity<?> changePassword(@PathVariable long id) {
+    public ResponseEntity<?> changePassword(@PathVariable @Min(value = 1, message = "userId must be equals or greater than 1") Long id) {
         userService.deleteUser(id);
         return new ResponseEntity<>("delete password",HttpStatus.ACCEPTED);
     }
     @Operation(summary = "change password user", description = "change password for user")
     @PatchMapping("/change-pwd")
-    public ResponseEntity<?> changePassword(@RequestBody UserChangePasswordRequest userChangePasswordRequest) {
+    public ResponseEntity<?> changePassword(@RequestBody @Valid UserChangePasswordRequest userChangePasswordRequest) {
         userService.changePassword(userChangePasswordRequest);
         return new ResponseEntity<>("change password",HttpStatus.ACCEPTED);
     }
 
     @Operation(summary = "Update User", description = "update info a user")
     @PutMapping("/update")
-    public ResponseEntity<?> updateUser(@RequestBody UserUpdateRequest userUpdateRequest) {
+    public ResponseEntity<?> updateUser(@RequestBody  @Valid UserUpdateRequest userUpdateRequest) {
         userService.updateUser(userUpdateRequest);
         return new ResponseEntity<>("updated", HttpStatus.ACCEPTED);
     }
