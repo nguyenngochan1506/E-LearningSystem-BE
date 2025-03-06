@@ -1,6 +1,7 @@
 package vn.edu.ngochandev.feature.user;
 
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import vn.edu.ngochandev.feature.user.dto.request.UserChangePasswordRequest;
 import vn.edu.ngochandev.feature.user.dto.request.UserCreationRequest;
 import vn.edu.ngochandev.feature.user.dto.request.UserUpdateRequest;
@@ -20,4 +21,5 @@ public interface UserService {
     void deleteUser(Long id);
     void changePassword(UserChangePasswordRequest req);
 
+    UserDetailsService getUserDetails();
 }

@@ -21,6 +21,21 @@ import java.time.LocalDateTime;
 @RestControllerAdvice
 public class GlobalException {
 
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleGlobalException(Exception ex, WebRequest request) {
+        ErrorResponse response = new ErrorResponse();
+        response.setTimestamp(LocalDateTime.now());
+        response.setPath(request.getDescription(false).replace("uri=", ""));
+        response.setStatus(HttpStatus.BAD_REQUEST.value());
+        response.setError(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        String message = ex.getMessage();
+        int start = message.indexOf(":") +1;
+        int end = message.indexOf("\r");
+        response.setMessage(message);
+        return response;
+    }
+
     @ExceptionHandler({MethodArgumentNotValidException.class, ConstraintViolationException.class, HandlerMethodValidationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleValidationException(Exception ex, WebRequest request) {

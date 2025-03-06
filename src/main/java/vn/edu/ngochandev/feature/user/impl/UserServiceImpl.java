@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,7 +87,7 @@ public class UserServiceImpl implements UserService {
                 .userStatus(e.getStatus())
                 .fullName(e.getFullName())
                 .gender(e.getGender())
-                .userName(e.getUserName())
+                .userName(e.getUsername())
                 .build()).toList();
 
         return UserPageResponse.builder()
@@ -102,7 +103,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse getUserDetailById(Long id) {
         UserEntity user = this.getUserById(id);
         return UserResponse.builder()
-                .userName(user.getUserName())
+                .userName(user.getUsername())
                 .userStatus(user.getStatus())
                 .id(user.getId())
                 .gender(user.getGender())
@@ -134,7 +135,7 @@ public class UserServiceImpl implements UserService {
         user.setDateOfBirth(req.getDateOfBirth());
         user.setPhoneNumber(req.getPhoneNumber());
         user.setEmail(req.getEmail());
-        user.setUserName(extractStudentIdFromEmail(req.getEmail()));
+        user.setUsername(extractStudentIdFromEmail(req.getEmail()));
         user.setPassword(passwordEncoder.encode(req.getPassword()));
         user.setStatus(UserStatus.ACTIVE);
         user.setUserType(req.getUserType());
@@ -157,7 +158,7 @@ public class UserServiceImpl implements UserService {
         user.setDateOfBirth(req.getDateOfBirth());
         user.setPhoneNumber(req.getPhoneNumber());
         user.setEmail(req.getEmail());
-        user.setUserName(extractStudentIdFromEmail(req.getEmail()));
+        user.setUsername(extractStudentIdFromEmail(req.getEmail()));
         user.setClassName(req.getClassName());
         // save to db
         userRepository.save(user);
@@ -187,6 +188,11 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(req.getNewPassword()));
         userRepository.save(user);
         log.info("Changed password {}", req);
+    }
+
+    @Override
+    public UserDetailsService getUserDetails() {
+        return username -> userRepository.findByUsername(username).orElseThrow(()-> new ResourceNotFoundException("User not found"));
     }
 
     private String extractStudentIdFromEmail(String email) {

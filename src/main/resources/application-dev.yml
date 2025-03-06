@@ -30,6 +30,8 @@ openapi:
     title: E-learning API Document
     version: 1.0.0
 
+jwt:
+  secretKey: f3bbf71e35701b1b5858089423895f1ff3dbf349b5055ea09b11978b015b9686
 #  jpa:
 #    database-platform: org.hibernate.dialect.H2Dialect
 #    hibernate:
