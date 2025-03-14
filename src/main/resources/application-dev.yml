@@ -6,7 +6,7 @@ spring:
     add-properties: true
   datasource:
     url: jdbc:postgresql://localhost:5432/elearningdb
-    username: postgres
+    username: admin
     password: admin
   jpa:
     properties:
