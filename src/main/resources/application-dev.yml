@@ -1,0 +1,51 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    add-properties: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/elearningdb
+    username: admin
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+#springdoc:
+#  api-docs:
+#    enabled: true
+#  swagger-ui:
+#    enabled: true
+
+#openapi:
+#  service:
+#    api-docs: backend-service
+#    server: http://localhost:${server.port}
+#    title: E-learning API Document
+#    version: 1.0.0
+
+jwt:
+  secretAccessTokenKey: b1mqrrj3ya825oq456pycrc12z49ronf
+  secretRefreshTokenKey: 24ot69benssf03jywqh05ym6v38hqm05
+  secretResetTokenKey: utb1cevvzlkqaz3z8y2ae7egpnzvy95v
+  accessTokenExpirationTime: 60 # 1 hour
+  refreshTokenExpirationTime: 10080 # 7 days
+  resetTokenExpirationTime: 10 # 10 minutes
+  issuer: E-learning
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        format_sql: true
