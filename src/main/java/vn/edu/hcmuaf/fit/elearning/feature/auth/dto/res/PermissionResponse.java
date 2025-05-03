@@ -13,4 +13,5 @@ public class PermissionResponse implements Serializable {
     private HttpMethod method;
     private String path;
     private String description;
+    private String module;
 }
