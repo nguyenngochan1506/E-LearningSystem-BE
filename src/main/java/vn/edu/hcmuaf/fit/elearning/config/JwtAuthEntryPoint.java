@@ -12,13 +12,13 @@ import vn.edu.hcmuaf.fit.elearning.common.ErrorResponse;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class JwtAuthEntryPoint  implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        response.setCharacterEncoding("UTF-8");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         ErrorResponse errorResponse = ErrorResponse.builder()

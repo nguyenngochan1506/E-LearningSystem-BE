@@ -12,23 +12,23 @@ import java.time.LocalDate;
 
 @Getter
 public class SignupRequest implements Serializable {
-    @NotBlank(message = "fullName must be not blank")
+    @NotBlank(message = "error.validate.not-blank")
     private String fullName;
 
-    @NotNull(message = "gender must be not blank")
+    @NotNull(message = "error.validate.not-blank")
     private Gender gender;
 
-    @NotNull(message = "dateOfBirth must be not blank")
+    @NotNull(message = "error.validate.not-blank")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth;
 
-    @NotBlank(message = "phoneNumber must be not blank")
+    @NotBlank(message = "error.validate.not-blank")
     private String phoneNumber;
 
-    @NotBlank(message = "email must be not blank")
-    @Email(message = "email invalid")
+    @NotBlank(message = "error.validate.not-blank")
+    @Email(message = "error.validate.invalid")
     private String email;
 
-    @NotBlank(message = "password must be not blank")
+    @NotBlank(message = "error.validate.not-blank")
     private String password;
 }

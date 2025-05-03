@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import vn.edu.hcmuaf.fit.elearning.common.enums.Platform;
 

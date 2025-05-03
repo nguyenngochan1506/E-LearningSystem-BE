@@ -14,8 +14,8 @@ public class ErrorResponse implements Serializable {
     private Date timestamp;
     private int status;
     private String error;
-    private String path;
     private String message;
+    private String path;
 
     public String getTimestamp() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSSS")
