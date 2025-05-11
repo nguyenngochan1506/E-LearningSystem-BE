@@ -64,6 +64,7 @@ public class AuthServiceImpl implements AuthService {
                 .refreshToken(refreshToken)
                 .build();
         redisTokenService.saveToken(redisToken);
+        log.info("User {} logged in successfully", user.getEmail());
 
         return AuthResponse.builder()
                 .accessToken(accessToken)

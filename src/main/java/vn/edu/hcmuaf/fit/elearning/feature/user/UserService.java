@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.elearning.feature.user;
 
+import jakarta.validation.Valid;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
@@ -22,4 +24,6 @@ public interface UserService {
     long restoreUserById(Long id);
 
     UserResponse getMe();
+
+    long assignRoleToUser( AssignRoleToUserRequest req);
 }

@@ -8,6 +8,8 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Slf4j
 @Configuration
@@ -28,6 +30,8 @@ public class RedisConfig {
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new JdkSerializationRedisSerializer());
         log.info("Connected");
         return template;
     }

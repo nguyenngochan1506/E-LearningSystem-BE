@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.common.enums.TokenType;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.JwtService;
 import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
+
 @Slf4j
 @Service
 public class JwtServiceImpl implements JwtService {
@@ -52,6 +55,7 @@ public class JwtServiceImpl implements JwtService {
                 .issuer(issuer)
                 .issueTime(new Date())
                 .expirationTime(expirationTime)
+                .claim("roles", buildRoles(user))
                 .build();
 
         // create payload
@@ -89,5 +93,9 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public String getEmailFromToken(String token) throws ParseException {
         return SignedJWT.parse(token).getJWTClaimsSet().getSubject();
+    }
+
+    private List<String> buildRoles(UserEntity user){
+        return user.getRoles().stream().map(RoleEntity::getName).toList();
     }
 }

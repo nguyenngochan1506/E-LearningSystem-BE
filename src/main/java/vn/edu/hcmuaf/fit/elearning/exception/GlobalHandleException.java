@@ -40,6 +40,30 @@ public class GlobalHandleException {
                 .build();
     }
 
+    @ExceptionHandler({IllegalArgumentException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleLegalArgumentException(IllegalArgumentException ex, WebRequest request) {
+        return ErrorResponse.builder()
+                .timestamp(new Date())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(ex.getMessage())
+                .path(request.getDescription(false).replace("uri=", ""))
+                .error(Translator.translate("error.argument.invalid"))
+                .build();
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+        return ErrorResponse.builder()
+                .timestamp(new Date())
+                .status(HttpStatus.NOT_FOUND.value())
+                .message(ex.getMessage())
+                .path(request.getDescription(false).replace("uri=", ""))
+                .error(Translator.translate("error.argument.invalid"))
+                .build();
+    }
+
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleValidationEnumException(HttpMessageNotReadableException ex, WebRequest request) {

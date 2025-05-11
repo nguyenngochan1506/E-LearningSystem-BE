@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -23,5 +24,5 @@ public class RoleEntity extends BaseEntity {
     private Boolean isDeleted;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    Set<PermissionEntity> permissions;
+    Set<PermissionEntity> permissions = new HashSet<>();
 }

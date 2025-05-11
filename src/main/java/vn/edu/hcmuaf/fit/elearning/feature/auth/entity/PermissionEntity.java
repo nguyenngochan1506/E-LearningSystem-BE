@@ -6,6 +6,9 @@ import lombok.Setter;
 import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
 import vn.edu.hcmuaf.fit.elearning.common.enums.HttpMethod;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "tbl_permission")
@@ -27,4 +30,7 @@ public class PermissionEntity extends BaseEntity {
 
     @Column(name = "module", length = 64)
     private String module;
+
+    @ManyToMany(mappedBy = "permissions", fetch = FetchType.LAZY)
+    private Set<RoleEntity> roles = new HashSet<>();
 }

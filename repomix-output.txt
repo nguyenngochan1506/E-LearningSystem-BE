@@ -1,0 +1,3757 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+.gitattributes
+.gitignore
+.mvn/wrapper/maven-wrapper.properties
+docker-compose.yml
+mvnw
+mvnw.cmd
+pom.xml
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/BaseEntity.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/Gender.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/HttpMethod.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/Platform.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/TokenType.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/UserStatus.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/ErrorResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/PageResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/ResponseDto.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/common/Translator.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/AuditorConfig.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/JpaConfig.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/JwtAuthEntryPoint.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/LocalResolver.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/PermissionFilter.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/RedisConfig.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/config/SecurityConfig.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/ElearningApplication.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/exception/GlobalHandleException.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/exception/ResourceNotFoundException.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/controller/AuthController.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/controller/PermissionController.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/controller/RoleController.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/AssignRoleToPermissionRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/AssignRoleToUserRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/ForgotPasswordRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/LoginRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/PermissionCreationRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/PermissionUpdateRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/ResetPasswordRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/RoleCreationRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/RoleUpdateRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/SignupRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/AuthResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/PermissionPageResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/PermissionResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/RolePageResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/RoleResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/entity/PermissionEntity.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/entity/RedisTokenEntity.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/entity/RoleEntity.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/repository/PermissionRepository.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/repository/RedisTokenRepository.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/repository/RoleRepository.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/AuthService.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/AuthServiceImpl.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/JwtServiceImpl.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/PermissionServiceImpl.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/RedisTokenServiceImpl.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/RoleServiceImpl.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/JwtService.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/PermissionService.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/RedisTokenService.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/RoleService.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/req/UserChangePasswordRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/req/UserCreationRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/req/UserUpdateInfoRequest.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/res/UserPageResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/res/UserResponse.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/impl/UserServiceImpl.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserController.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserEntity.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserRepository.java
+src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserService.java
+src/main/resources/application-dev.yml
+src/main/resources/application-prod.yml
+src/main/resources/application-test.yml
+src/main/resources/application.yml
+src/main/resources/banner.txt
+src/main/resources/messages_vi.properties
+src/main/resources/messages.properties
+src/test/java/vn/edu/hcmuaf/fit/elearning/ElearningApplicationTests.java
+
+================================================================
+Files
+================================================================
+
+================
+File: .gitattributes
+================
+/mvnw text eol=lf
+*.cmd text eol=crlf
+
+================
+File: .gitignore
+================
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+================
+File: .mvn/wrapper/maven-wrapper.properties
+================
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+wrapperVersion=3.3.2
+distributionType=only-script
+distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.zip
+
+================
+File: docker-compose.yml
+================
+services:
+  postgres:
+    image: postgres:16
+    container_name: elearningdb_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: elearningdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: elearningdb_redis
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+
+volumes:
+  postgres_data:
+
+================
+File: mvnw
+================
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# Apache Maven Wrapper startup batch script, version 3.3.2
+#
+# Optional ENV vars
+# -----------------
+#   JAVA_HOME - location of a JDK home dir, required when download maven via java source
+#   MVNW_REPOURL - repo url base for downloading maven distribution
+#   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven
+#   MVNW_VERBOSE - true: enable verbose log; debug: trace the mvnw script; others: silence the output
+# ----------------------------------------------------------------------------
+
+set -euf
+[ "${MVNW_VERBOSE-}" != debug ] || set -x
+
+# OS specific support.
+native_path() { printf %s\\n "$1"; }
+case "$(uname)" in
+CYGWIN* | MINGW*)
+  [ -z "${JAVA_HOME-}" ] || JAVA_HOME="$(cygpath --unix "$JAVA_HOME")"
+  native_path() { cygpath --path --windows "$1"; }
+  ;;
+esac
+
+# set JAVACMD and JAVACCMD
+set_java_home() {
+  # For Cygwin and MinGW, ensure paths are in Unix format before anything is touched
+  if [ -n "${JAVA_HOME-}" ]; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ]; then
+      # IBM's JDK on AIX uses strange locations for the executables
+      JAVACMD="$JAVA_HOME/jre/sh/java"
+      JAVACCMD="$JAVA_HOME/jre/sh/javac"
+    else
+      JAVACMD="$JAVA_HOME/bin/java"
+      JAVACCMD="$JAVA_HOME/bin/javac"
+
+      if [ ! -x "$JAVACMD" ] || [ ! -x "$JAVACCMD" ]; then
+        echo "The JAVA_HOME environment variable is not defined correctly, so mvnw cannot run." >&2
+        echo "JAVA_HOME is set to \"$JAVA_HOME\", but \"\$JAVA_HOME/bin/java\" or \"\$JAVA_HOME/bin/javac\" does not exist." >&2
+        return 1
+      fi
+    fi
+  else
+    JAVACMD="$(
+      'set' +e
+      'unset' -f command 2>/dev/null
+      'command' -v java
+    )" || :
+    JAVACCMD="$(
+      'set' +e
+      'unset' -f command 2>/dev/null
+      'command' -v javac
+    )" || :
+
+    if [ ! -x "${JAVACMD-}" ] || [ ! -x "${JAVACCMD-}" ]; then
+      echo "The java/javac command does not exist in PATH nor is JAVA_HOME set, so mvnw cannot run." >&2
+      return 1
+    fi
+  fi
+}
+
+# hash string like Java String::hashCode
+hash_string() {
+  str="${1:-}" h=0
+  while [ -n "$str" ]; do
+    char="${str%"${str#?}"}"
+    h=$(((h * 31 + $(LC_CTYPE=C printf %d "'$char")) % 4294967296))
+    str="${str#?}"
+  done
+  printf %x\\n $h
+}
+
+verbose() { :; }
+[ "${MVNW_VERBOSE-}" != true ] || verbose() { printf %s\\n "${1-}"; }
+
+die() {
+  printf %s\\n "$1" >&2
+  exit 1
+}
+
+trim() {
+  # MWRAPPER-139:
+  #   Trims trailing and leading whitespace, carriage returns, tabs, and linefeeds.
+  #   Needed for removing poorly interpreted newline sequences when running in more
+  #   exotic environments such as mingw bash on Windows.
+  printf "%s" "${1}" | tr -d '[:space:]'
+}
+
+# parse distributionUrl and optional distributionSha256Sum, requires .mvn/wrapper/maven-wrapper.properties
+while IFS="=" read -r key value; do
+  case "${key-}" in
+  distributionUrl) distributionUrl=$(trim "${value-}") ;;
+  distributionSha256Sum) distributionSha256Sum=$(trim "${value-}") ;;
+  esac
+done <"${0%/*}/.mvn/wrapper/maven-wrapper.properties"
+[ -n "${distributionUrl-}" ] || die "cannot read distributionUrl property in ${0%/*}/.mvn/wrapper/maven-wrapper.properties"
+
+case "${distributionUrl##*/}" in
+maven-mvnd-*bin.*)
+  MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/
+  case "${PROCESSOR_ARCHITECTURE-}${PROCESSOR_ARCHITEW6432-}:$(uname -a)" in
+  *AMD64:CYGWIN* | *AMD64:MINGW*) distributionPlatform=windows-amd64 ;;
+  :Darwin*x86_64) distributionPlatform=darwin-amd64 ;;
+  :Darwin*arm64) distributionPlatform=darwin-aarch64 ;;
+  :Linux*x86_64*) distributionPlatform=linux-amd64 ;;
+  *)
+    echo "Cannot detect native platform for mvnd on $(uname)-$(uname -m), use pure java version" >&2
+    distributionPlatform=linux-amd64
+    ;;
+  esac
+  distributionUrl="${distributionUrl%-bin.*}-$distributionPlatform.zip"
+  ;;
+maven-mvnd-*) MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/ ;;
+*) MVN_CMD="mvn${0##*/mvnw}" _MVNW_REPO_PATTERN=/org/apache/maven/ ;;
+esac
+
+# apply MVNW_REPOURL and calculate MAVEN_HOME
+# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>
+[ -z "${MVNW_REPOURL-}" ] || distributionUrl="$MVNW_REPOURL$_MVNW_REPO_PATTERN${distributionUrl#*"$_MVNW_REPO_PATTERN"}"
+distributionUrlName="${distributionUrl##*/}"
+distributionUrlNameMain="${distributionUrlName%.*}"
+distributionUrlNameMain="${distributionUrlNameMain%-bin}"
+MAVEN_USER_HOME="${MAVEN_USER_HOME:-${HOME}/.m2}"
+MAVEN_HOME="${MAVEN_USER_HOME}/wrapper/dists/${distributionUrlNameMain-}/$(hash_string "$distributionUrl")"
+
+exec_maven() {
+  unset MVNW_VERBOSE MVNW_USERNAME MVNW_PASSWORD MVNW_REPOURL || :
+  exec "$MAVEN_HOME/bin/$MVN_CMD" "$@" || die "cannot exec $MAVEN_HOME/bin/$MVN_CMD"
+}
+
+if [ -d "$MAVEN_HOME" ]; then
+  verbose "found existing MAVEN_HOME at $MAVEN_HOME"
+  exec_maven "$@"
+fi
+
+case "${distributionUrl-}" in
+*?-bin.zip | *?maven-mvnd-?*-?*.zip) ;;
+*) die "distributionUrl is not valid, must match *-bin.zip or maven-mvnd-*.zip, but found '${distributionUrl-}'" ;;
+esac
+
+# prepare tmp dir
+if TMP_DOWNLOAD_DIR="$(mktemp -d)" && [ -d "$TMP_DOWNLOAD_DIR" ]; then
+  clean() { rm -rf -- "$TMP_DOWNLOAD_DIR"; }
+  trap clean HUP INT TERM EXIT
+else
+  die "cannot create temp dir"
+fi
+
+mkdir -p -- "${MAVEN_HOME%/*}"
+
+# Download and Install Apache Maven
+verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."
+verbose "Downloading from: $distributionUrl"
+verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"
+
+# select .zip or .tar.gz
+if ! command -v unzip >/dev/null; then
+  distributionUrl="${distributionUrl%.zip}.tar.gz"
+  distributionUrlName="${distributionUrl##*/}"
+fi
+
+# verbose opt
+__MVNW_QUIET_WGET=--quiet __MVNW_QUIET_CURL=--silent __MVNW_QUIET_UNZIP=-q __MVNW_QUIET_TAR=''
+[ "${MVNW_VERBOSE-}" != true ] || __MVNW_QUIET_WGET='' __MVNW_QUIET_CURL='' __MVNW_QUIET_UNZIP='' __MVNW_QUIET_TAR=v
+
+# normalize http auth
+case "${MVNW_PASSWORD:+has-password}" in
+'') MVNW_USERNAME='' MVNW_PASSWORD='' ;;
+has-password) [ -n "${MVNW_USERNAME-}" ] || MVNW_USERNAME='' MVNW_PASSWORD='' ;;
+esac
+
+if [ -z "${MVNW_USERNAME-}" ] && command -v wget >/dev/null; then
+  verbose "Found wget ... using wget"
+  wget ${__MVNW_QUIET_WGET:+"$__MVNW_QUIET_WGET"} "$distributionUrl" -O "$TMP_DOWNLOAD_DIR/$distributionUrlName" || die "wget: Failed to fetch $distributionUrl"
+elif [ -z "${MVNW_USERNAME-}" ] && command -v curl >/dev/null; then
+  verbose "Found curl ... using curl"
+  curl ${__MVNW_QUIET_CURL:+"$__MVNW_QUIET_CURL"} -f -L -o "$TMP_DOWNLOAD_DIR/$distributionUrlName" "$distributionUrl" || die "curl: Failed to fetch $distributionUrl"
+elif set_java_home; then
+  verbose "Falling back to use Java to download"
+  javaSource="$TMP_DOWNLOAD_DIR/Downloader.java"
+  targetZip="$TMP_DOWNLOAD_DIR/$distributionUrlName"
+  cat >"$javaSource" <<-END
+	public class Downloader extends java.net.Authenticator
+	{
+	  protected java.net.PasswordAuthentication getPasswordAuthentication()
+	  {
+	    return new java.net.PasswordAuthentication( System.getenv( "MVNW_USERNAME" ), System.getenv( "MVNW_PASSWORD" ).toCharArray() );
+	  }
+	  public static void main( String[] args ) throws Exception
+	  {
+	    setDefault( new Downloader() );
+	    java.nio.file.Files.copy( java.net.URI.create( args[0] ).toURL().openStream(), java.nio.file.Paths.get( args[1] ).toAbsolutePath().normalize() );
+	  }
+	}
+	END
+  # For Cygwin/MinGW, switch paths to Windows format before running javac and java
+  verbose " - Compiling Downloader.java ..."
+  "$(native_path "$JAVACCMD")" "$(native_path "$javaSource")" || die "Failed to compile Downloader.java"
+  verbose " - Running Downloader.java ..."
+  "$(native_path "$JAVACMD")" -cp "$(native_path "$TMP_DOWNLOAD_DIR")" Downloader "$distributionUrl" "$(native_path "$targetZip")"
+fi
+
+# If specified, validate the SHA-256 sum of the Maven distribution zip file
+if [ -n "${distributionSha256Sum-}" ]; then
+  distributionSha256Result=false
+  if [ "$MVN_CMD" = mvnd.sh ]; then
+    echo "Checksum validation is not supported for maven-mvnd." >&2
+    echo "Please disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
+    exit 1
+  elif command -v sha256sum >/dev/null; then
+    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | sha256sum -c >/dev/null 2>&1; then
+      distributionSha256Result=true
+    fi
+  elif command -v shasum >/dev/null; then
+    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | shasum -a 256 -c >/dev/null 2>&1; then
+      distributionSha256Result=true
+    fi
+  else
+    echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available." >&2
+    echo "Please install either command, or disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
+    exit 1
+  fi
+  if [ $distributionSha256Result = false ]; then
+    echo "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised." >&2
+    echo "If you updated your Maven version, you need to update the specified distributionSha256Sum property." >&2
+    exit 1
+  fi
+fi
+
+# unzip and move
+if command -v unzip >/dev/null; then
+  unzip ${__MVNW_QUIET_UNZIP:+"$__MVNW_QUIET_UNZIP"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -d "$TMP_DOWNLOAD_DIR" || die "failed to unzip"
+else
+  tar xzf${__MVNW_QUIET_TAR:+"$__MVNW_QUIET_TAR"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -C "$TMP_DOWNLOAD_DIR" || die "failed to untar"
+fi
+printf %s\\n "$distributionUrl" >"$TMP_DOWNLOAD_DIR/$distributionUrlNameMain/mvnw.url"
+mv -- "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" "$MAVEN_HOME" || [ -d "$MAVEN_HOME" ] || die "fail to move MAVEN_HOME"
+
+clean || :
+exec_maven "$@"
+
+================
+File: mvnw.cmd
+================
+<# : batch portion
+@REM ----------------------------------------------------------------------------
+@REM Licensed to the Apache Software Foundation (ASF) under one
+@REM or more contributor license agreements.  See the NOTICE file
+@REM distributed with this work for additional information
+@REM regarding copyright ownership.  The ASF licenses this file
+@REM to you under the Apache License, Version 2.0 (the
+@REM "License"); you may not use this file except in compliance
+@REM with the License.  You may obtain a copy of the License at
+@REM
+@REM    http://www.apache.org/licenses/LICENSE-2.0
+@REM
+@REM Unless required by applicable law or agreed to in writing,
+@REM software distributed under the License is distributed on an
+@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+@REM KIND, either express or implied.  See the License for the
+@REM specific language governing permissions and limitations
+@REM under the License.
+@REM ----------------------------------------------------------------------------
+
+@REM ----------------------------------------------------------------------------
+@REM Apache Maven Wrapper startup batch script, version 3.3.2
+@REM
+@REM Optional ENV vars
+@REM   MVNW_REPOURL - repo url base for downloading maven distribution
+@REM   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven
+@REM   MVNW_VERBOSE - true: enable verbose log; others: silence the output
+@REM ----------------------------------------------------------------------------
+
+@IF "%__MVNW_ARG0_NAME__%"=="" (SET __MVNW_ARG0_NAME__=%~nx0)
+@SET __MVNW_CMD__=
+@SET __MVNW_ERROR__=
+@SET __MVNW_PSMODULEP_SAVE=%PSModulePath%
+@SET PSModulePath=
+@FOR /F "usebackq tokens=1* delims==" %%A IN (`powershell -noprofile "& {$scriptDir='%~dp0'; $script='%__MVNW_ARG0_NAME__%'; icm -ScriptBlock ([Scriptblock]::Create((Get-Content -Raw '%~f0'))) -NoNewScope}"`) DO @(
+  IF "%%A"=="MVN_CMD" (set __MVNW_CMD__=%%B) ELSE IF "%%B"=="" (echo %%A) ELSE (echo %%A=%%B)
+)
+@SET PSModulePath=%__MVNW_PSMODULEP_SAVE%
+@SET __MVNW_PSMODULEP_SAVE=
+@SET __MVNW_ARG0_NAME__=
+@SET MVNW_USERNAME=
+@SET MVNW_PASSWORD=
+@IF NOT "%__MVNW_CMD__%"=="" (%__MVNW_CMD__% %*)
+@echo Cannot start maven from wrapper >&2 && exit /b 1
+@GOTO :EOF
+: end batch / begin powershell #>
+
+$ErrorActionPreference = "Stop"
+if ($env:MVNW_VERBOSE -eq "true") {
+  $VerbosePreference = "Continue"
+}
+
+# calculate distributionUrl, requires .mvn/wrapper/maven-wrapper.properties
+$distributionUrl = (Get-Content -Raw "$scriptDir/.mvn/wrapper/maven-wrapper.properties" | ConvertFrom-StringData).distributionUrl
+if (!$distributionUrl) {
+  Write-Error "cannot read distributionUrl property in $scriptDir/.mvn/wrapper/maven-wrapper.properties"
+}
+
+switch -wildcard -casesensitive ( $($distributionUrl -replace '^.*/','') ) {
+  "maven-mvnd-*" {
+    $USE_MVND = $true
+    $distributionUrl = $distributionUrl -replace '-bin\.[^.]*$',"-windows-amd64.zip"
+    $MVN_CMD = "mvnd.cmd"
+    break
+  }
+  default {
+    $USE_MVND = $false
+    $MVN_CMD = $script -replace '^mvnw','mvn'
+    break
+  }
+}
+
+# apply MVNW_REPOURL and calculate MAVEN_HOME
+# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>
+if ($env:MVNW_REPOURL) {
+  $MVNW_REPO_PATTERN = if ($USE_MVND) { "/org/apache/maven/" } else { "/maven/mvnd/" }
+  $distributionUrl = "$env:MVNW_REPOURL$MVNW_REPO_PATTERN$($distributionUrl -replace '^.*'+$MVNW_REPO_PATTERN,'')"
+}
+$distributionUrlName = $distributionUrl -replace '^.*/',''
+$distributionUrlNameMain = $distributionUrlName -replace '\.[^.]*$','' -replace '-bin$',''
+$MAVEN_HOME_PARENT = "$HOME/.m2/wrapper/dists/$distributionUrlNameMain"
+if ($env:MAVEN_USER_HOME) {
+  $MAVEN_HOME_PARENT = "$env:MAVEN_USER_HOME/wrapper/dists/$distributionUrlNameMain"
+}
+$MAVEN_HOME_NAME = ([System.Security.Cryptography.MD5]::Create().ComputeHash([byte[]][char[]]$distributionUrl) | ForEach-Object {$_.ToString("x2")}) -join ''
+$MAVEN_HOME = "$MAVEN_HOME_PARENT/$MAVEN_HOME_NAME"
+
+if (Test-Path -Path "$MAVEN_HOME" -PathType Container) {
+  Write-Verbose "found existing MAVEN_HOME at $MAVEN_HOME"
+  Write-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"
+  exit $?
+}
+
+if (! $distributionUrlNameMain -or ($distributionUrlName -eq $distributionUrlNameMain)) {
+  Write-Error "distributionUrl is not valid, must end with *-bin.zip, but found $distributionUrl"
+}
+
+# prepare tmp dir
+$TMP_DOWNLOAD_DIR_HOLDER = New-TemporaryFile
+$TMP_DOWNLOAD_DIR = New-Item -Itemtype Directory -Path "$TMP_DOWNLOAD_DIR_HOLDER.dir"
+$TMP_DOWNLOAD_DIR_HOLDER.Delete() | Out-Null
+trap {
+  if ($TMP_DOWNLOAD_DIR.Exists) {
+    try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }
+    catch { Write-Warning "Cannot remove $TMP_DOWNLOAD_DIR" }
+  }
+}
+
+New-Item -Itemtype Directory -Path "$MAVEN_HOME_PARENT" -Force | Out-Null
+
+# Download and Install Apache Maven
+Write-Verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."
+Write-Verbose "Downloading from: $distributionUrl"
+Write-Verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"
+
+$webclient = New-Object System.Net.WebClient
+if ($env:MVNW_USERNAME -and $env:MVNW_PASSWORD) {
+  $webclient.Credentials = New-Object System.Net.NetworkCredential($env:MVNW_USERNAME, $env:MVNW_PASSWORD)
+}
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$webclient.DownloadFile($distributionUrl, "$TMP_DOWNLOAD_DIR/$distributionUrlName") | Out-Null
+
+# If specified, validate the SHA-256 sum of the Maven distribution zip file
+$distributionSha256Sum = (Get-Content -Raw "$scriptDir/.mvn/wrapper/maven-wrapper.properties" | ConvertFrom-StringData).distributionSha256Sum
+if ($distributionSha256Sum) {
+  if ($USE_MVND) {
+    Write-Error "Checksum validation is not supported for maven-mvnd. `nPlease disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties."
+  }
+  Import-Module $PSHOME\Modules\Microsoft.PowerShell.Utility -Function Get-FileHash
+  if ((Get-FileHash "$TMP_DOWNLOAD_DIR/$distributionUrlName" -Algorithm SHA256).Hash.ToLower() -ne $distributionSha256Sum) {
+    Write-Error "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised. If you updated your Maven version, you need to update the specified distributionSha256Sum property."
+  }
+}
+
+# unzip and move
+Expand-Archive "$TMP_DOWNLOAD_DIR/$distributionUrlName" -DestinationPath "$TMP_DOWNLOAD_DIR" | Out-Null
+Rename-Item -Path "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" -NewName $MAVEN_HOME_NAME | Out-Null
+try {
+  Move-Item -Path "$TMP_DOWNLOAD_DIR/$MAVEN_HOME_NAME" -Destination $MAVEN_HOME_PARENT | Out-Null
+} catch {
+  if (! (Test-Path -Path "$MAVEN_HOME" -PathType Container)) {
+    Write-Error "fail to move MAVEN_HOME"
+  }
+} finally {
+  try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }
+  catch { Write-Warning "Cannot remove $TMP_DOWNLOAD_DIR" }
+}
+
+Write-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"
+
+================
+File: pom.xml
+================
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>vn.edu.hcmuaf.fit</groupId>
+	<artifactId>elearning</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>elearning</name>
+	<description>Demo project for elearing system</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+<!--		REDIS-->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>5.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+<!--		Security-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+<!--		Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.38</version>
+				<scope>provided</scope>
+			</dependency>
+<!--		Heath check-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+<!--		JPA-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+<!--		Validation-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+<!--		RESTFUL API-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+<!-- Devtool-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+<!--		Postgres SQL-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<spring.profiles.active>test</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/BaseEntity.java
+================
+package vn.edu.hcmuaf.fit.elearning.common;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+@MappedSuperclass
+@Getter
+@EntityListeners(AuditingEntityListener.class)
+public class BaseEntity implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
+    @Column(name = "created_by", nullable = true)
+    @CreatedBy
+    private String createdBy;
+
+    @Column(name = "updated_by", nullable = true)
+    @LastModifiedBy
+    private String updatedBy;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/Gender.java
+================
+package vn.edu.hcmuaf.fit.elearning.common.enums;
+
+public enum Gender {
+    MALE, FEMALE, OTHER
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/HttpMethod.java
+================
+package vn.edu.hcmuaf.fit.elearning.common.enums;
+
+public enum HttpMethod {
+    GET,
+    POST,
+    PUT,
+    DELETE,
+    PATCH,
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/Platform.java
+================
+package vn.edu.hcmuaf.fit.elearning.common.enums;
+
+public enum Platform {
+    WEB,
+    ANDROID,
+    IOS;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/TokenType.java
+================
+package vn.edu.hcmuaf.fit.elearning.common.enums;
+
+public enum TokenType {
+    ACCESS_TOKEN,
+    REFRESH_TOKEN,
+    RESET_TOKEN
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/enums/UserStatus.java
+================
+package vn.edu.hcmuaf.fit.elearning.common.enums;
+
+public enum UserStatus {
+    ACTIVE,
+    INACTIVE,
+    BLOCKED
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/ErrorResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.common;
+
+import lombok.Builder;
+import lombok.Getter;
+
+import java.io.Serializable;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+@Getter
+@Builder
+public class ErrorResponse implements Serializable {
+    private Date timestamp;
+    private int status;
+    private String error;
+    private String message;
+    private String path;
+
+    public String getTimestamp() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSSS")
+                .withZone(ZoneId.systemDefault());
+        return formatter.format(timestamp.toInstant());
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/PageResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.common;
+
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+
+import java.io.Serializable;
+
+@Getter
+@SuperBuilder
+public class PageResponse implements Serializable {
+    private int pageNo;
+    private int pageSize;
+    private long totalElements;
+    private int totalPages;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/ResponseDto.java
+================
+package vn.edu.hcmuaf.fit.elearning.common;
+
+import lombok.Builder;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+@Builder
+public class ResponseDto implements Serializable {
+    private int status;
+    private String message;
+    private Object data;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/common/Translator.java
+================
+package vn.edu.hcmuaf.fit.elearning.common;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.stereotype.Component;
+
+import java.util.Locale;
+
+@Component
+public class Translator {
+    private static ResourceBundleMessageSource messageSource;
+
+    @Autowired
+    public Translator(ResourceBundleMessageSource messageSource) {
+        Translator.messageSource = messageSource;
+    }
+
+    public static String translate(String msgCode) {
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage(msgCode, null, locale);
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/AuditorConfig.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.Optional;
+
+@Configuration
+public class AuditorConfig {
+    @Bean
+    public AuditorAware<String> auditorProvider() {
+        return () -> {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null || !authentication.isAuthenticated() || authentication.getPrincipal().equals("anonymousUser")) {
+                return Optional.of("system");
+            }
+            return Optional.of(authentication.getName());
+        };
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/JpaConfig.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+@Configuration
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+public class JpaConfig {
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/JwtAuthEntryPoint.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import vn.edu.hcmuaf.fit.elearning.common.ErrorResponse;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+
+import java.io.IOException;
+import java.util.Date;
+
+public class JwtAuthEntryPoint  implements AuthenticationEntryPoint {
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(new Date(System.currentTimeMillis()))
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .path(request.getRequestURI())
+                .message(Translator.translate("auth.unauthorized"))
+                .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
+                .build();
+
+        ObjectMapper mapper = new ObjectMapper();
+        response.getWriter().write(mapper.writeValueAsString(errorResponse));
+        response.flushBuffer();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/LocalResolver.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+@Configuration
+public class LocalResolver extends AcceptHeaderLocaleResolver implements WebMvcConfigurer {
+    @Override
+    public Locale resolveLocale(HttpServletRequest request) {
+        String language = request.getHeader("Accept-Language");
+        List<Locale> locales = List.of(new Locale("en", "US"), new Locale("vi", "VN"));
+        return StringUtils.hasLength(language)
+                ? Locale.lookup(Locale.LanguageRange.parse(language), locales)
+                : Locale.getDefault();
+    }
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(3600);
+        return messageSource;
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/PermissionFilter.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+@Component
+public class PermissionFilter extends OncePerRequestFilter {
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        // Check if the user is authenticated
+        if (authentication == null) {
+            // If not authenticated, proceed to the next filter
+            filterChain.doFilter(request, response);
+            return;
+        }
+        String requestURI = request.getRequestURI();
+        String method = request.getMethod();
+         if (!hasPermission(authentication, requestURI, method)) {
+             response.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission to access this resource");
+             return;
+         }
+    }
+
+    private boolean hasPermission(Authentication authentication, String requestURI, String method) {
+
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/RedisConfig.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+
+@Slf4j
+@Configuration
+@EnableRedisRepositories
+public class RedisConfig {
+    @Value("${spring.data.redis.host}")
+    private String redisHost;
+    @Value("${spring.data.redis.port}")
+    private int redisPort;
+
+    @Bean
+    public JedisConnectionFactory jedisConnectionFactory() {
+        log.info("Connecting to Redis at {}:{}", redisHost, redisPort);
+        RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration(redisHost, redisPort);
+        return new JedisConnectionFactory(redisConfig);
+    }
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate() {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(jedisConnectionFactory());
+        log.info("Connected");
+        return template;
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/config/SecurityConfig.java
+================
+package vn.edu.hcmuaf.fit.elearning.config;
+
+import com.nimbusds.jose.JWSAlgorithm;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
+import org.springframework.security.web.SecurityFilterChain;
+
+import javax.crypto.spec.SecretKeySpec;
+
+@Configuration
+@RequiredArgsConstructor
+public class SecurityConfig {
+    @Value("${jwt.secretAccessTokenKey}")
+    private String secretAccessTokenKey;
+    private final PermissionFilter permissionFilter;
+
+    private final String[] WHITELIST_URLS = {
+            "/api/auth/login",
+            "/api/auth/signup",
+            "/api/auth/refresh",
+            "/api/auth/forgot-password",
+            "/api/auth/reset-password",
+            "/api/auth/logout",
+    };
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers(WHITELIST_URLS).permitAll()
+                            .anyRequest().authenticated();
+                }).addFilterAfter(permissionFilter, BearerTokenAuthenticationFilter.class)
+                .oauth2ResourceServer(oauth2 -> {
+                    oauth2
+                            .jwt(jwtConfigurer -> jwtConfigurer
+                                    .decoder(jwtDecoder())
+                            .jwtAuthenticationConverter(jwtAuthenticationConverter()))
+                            .authenticationEntryPoint(new JwtAuthEntryPoint());
+                });
+        return http.build();
+    }
+
+    @Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
+        converter.setAuthorityPrefix("");
+        converter.setAuthoritiesClaimName("roles");
+        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(converter);
+        return jwtAuthenticationConverter;
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretAccessTokenKey.getBytes(), JWSAlgorithm.HS256.toString());
+        return NimbusJwtDecoder
+                .withSecretKey(secretKeySpec)
+                .macAlgorithm(MacAlgorithm.HS256)
+                .build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/ElearningApplication.java
+================
+package vn.edu.hcmuaf.fit.elearning;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+@SpringBootApplication
+public class ElearningApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ElearningApplication.class, args);
+	}
+
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/exception/GlobalHandleException.java
+================
+package vn.edu.hcmuaf.fit.elearning.exception;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+import vn.edu.hcmuaf.fit.elearning.common.ErrorResponse;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Slf4j
+@RestControllerAdvice
+public class GlobalHandleException {
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleValidationException(MethodArgumentNotValidException ex, WebRequest request) {
+        List<String> errors = ex.getBindingResult().getFieldErrors().stream()
+                .map(s -> {
+                    String fieldName = s.getField();
+                    String message = Translator.translate(s.getDefaultMessage());
+                    return fieldName + " " + message;
+                })
+                .toList();
+        return ErrorResponse.builder()
+                .timestamp(new Date())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(errors.toString().substring(1, errors.toString().length() - 1))
+                .path(request.getDescription(false).replace("uri=", ""))
+                .error(Translator.translate("error.argument.invalid"))
+                .build();
+    }
+
+    @ExceptionHandler({IllegalArgumentException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleLegalArgumentException(IllegalArgumentException ex, WebRequest request) {
+        return ErrorResponse.builder()
+                .timestamp(new Date())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(ex.getMessage())
+                .path(request.getDescription(false).replace("uri=", ""))
+                .error(Translator.translate("error.argument.invalid"))
+                .build();
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+        return ErrorResponse.builder()
+                .timestamp(new Date())
+                .status(HttpStatus.NOT_FOUND.value())
+                .message(ex.getMessage())
+                .path(request.getDescription(false).replace("uri=", ""))
+                .error(Translator.translate("error.argument.invalid"))
+                .build();
+    }
+
+    @ExceptionHandler({HttpMessageNotReadableException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleValidationEnumException(HttpMessageNotReadableException ex, WebRequest request) {
+        String message = ex.getMessage();
+        String customMessage = "";
+
+        customMessage = message.substring(message.indexOf("common.enums.") + "common.enums.".length(), message.indexOf("from")-2)
+                + " must be " + message.substring(message.indexOf("["), message.lastIndexOf("]") +1);
+        return ErrorResponse.builder()
+                .timestamp(new Date(System.currentTimeMillis()))
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(customMessage)
+                .error(Translator.translate("error.argument.invalid"))
+                .path(request.getDescription(false).replace("uri=", ""))
+                .build();
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleBadCredentialException(BadCredentialsException ex, WebRequest request) {
+
+        return ErrorResponse.builder()
+                .timestamp(new Date(System.currentTimeMillis()))
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .message(ex.getMessage())
+                .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
+                .path(request.getDescription(false).replace("uri=", ""))
+                .build();
+    }
+
+    @ExceptionHandler(SQLException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleDuplicateKey(SQLException ex, WebRequest request) {
+        String message = ex.getMessage();
+        String customMessage = message.substring(message.indexOf("("), message.lastIndexOf(")"))
+                .replace("(", "")
+                .replace(")", "") +
+                " "+ Translator.translate("error.duplicate");
+
+        return ErrorResponse.builder()
+                .timestamp(new Date(System.currentTimeMillis()))
+                .status(HttpStatus.BAD_REQUEST.value())
+                .message(customMessage)
+                .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
+                .path(request.getDescription(false).replace("uri=", ""))
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/exception/ResourceNotFoundException.java
+================
+package vn.edu.hcmuaf.fit.elearning.exception;
+
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/controller/AuthController.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.controller;
+
+import com.nimbusds.jose.JOSEException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ForgotPasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.LoginRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ResetPasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.SignupRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.AuthService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
+
+import java.text.ParseException;
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+    private final AuthService authService;
+    private final UserService userService;
+
+    @PostMapping("/reset-password")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto resetPassword(@Valid @RequestBody ResetPasswordRequest request) throws JOSEException, ParseException {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("auth.reset-password.success"))
+                .data(authService.resetPassword(request))
+                .build();
+    }
+
+    @PostMapping("/forgot-password")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto forgotPassword(@Valid @RequestBody ForgotPasswordRequest request) throws JOSEException {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("auth.forgot-password.success"))
+                .data(authService.forgotPassword(request))
+                .build();
+    }
+
+    @GetMapping("/me")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getMe() {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("auth.me.success"))
+                .data(userService.getMe())
+                .build();
+    }
+    @PostMapping("/refresh")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto refreshToken(HttpServletRequest request) throws ParseException, JOSEException {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("auth.refresh.success"))
+                .data(authService.refreshToken(request))
+                .build();
+    }
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto login(@Valid @RequestBody LoginRequest loginRequest) throws JOSEException {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("auth.login.success"))
+                .data(authService.authenticate(loginRequest))
+                .build();
+    }
+
+    @PostMapping("/logout")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto logout(HttpServletRequest request) throws ParseException {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("auth.logout.success"))
+                .data(authService.removeToken(request))
+                .build();
+    }
+
+    @PostMapping("/signup")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseDto signup(@Valid @RequestBody SignupRequest signupRequest) {
+        return ResponseDto.builder()
+                .status(HttpStatus.CREATED.value())
+                .message(Translator.translate("auth.signup.success"))
+                .data(authService.signup(signupRequest))
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/controller/PermissionController.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.controller;
+
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionUpdateRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.PermissionService;
+
+@RestController
+@RequestMapping("/api/v1/permissions")
+@RequiredArgsConstructor
+public class PermissionController {
+    private final PermissionService permissionService;
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseDto createPermission(@Valid @RequestBody PermissionCreationRequest request) {
+        return ResponseDto.builder()
+                .status(HttpStatus.CREATED.value())
+                .message(Translator.translate("permission.create.success"))
+                .data(permissionService.createPermission(request))
+                .build();
+    }
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto updatePermission(@Valid @RequestBody PermissionUpdateRequest request) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("permission.update.success"))
+                .data(permissionService.updatePermission(request))
+                .build();
+    }
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getPermissionById(@PathVariable long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("permission.get.success"))
+                .data(permissionService.getPermissionById(id))
+                .build();
+    }
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getAllPermissions(@RequestParam(defaultValue = "1") int pageNo,
+                                         @RequestParam(defaultValue = "10") int pageSize) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("permission.get.all.success"))
+                .data(permissionService.getAllPermissions(pageNo, pageSize, false))
+                .build();
+    }
+    @GetMapping("/trash")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getAllDeletedPermissions(@RequestParam(defaultValue = "1") int pageNo,
+                                                @RequestParam(defaultValue = "10") int pageSize) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("permission.get.all.trash.success"))
+                .data(permissionService.getAllPermissions(pageNo, pageSize, true))
+                .build();
+    }
+    @PatchMapping("/restore/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto restorePermission(@PathVariable long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("permission.restore.success"))
+                .data(permissionService.restorePermission(id))
+                .build();
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto deletePermission(@PathVariable long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("permission.delete.success"))
+                .data(permissionService.deletePermission(id))
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/controller/RoleController.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.controller;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToPermissionRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleUpdateRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RoleService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
+
+@RestController
+@RequestMapping("/api/v1/roles")
+@RequiredArgsConstructor
+public class RoleController {
+    private final RoleService roleService;
+    private final UserService userService;
+
+
+    @PostMapping("/assign-permission")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto assignPermissionToRole(@Valid @RequestBody AssignRoleToPermissionRequest req) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.assign.success"))
+                .data(roleService.assignRolePermission(req))
+                .build();
+    }
+
+    @PostMapping("/assign-user")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto assignRoleToUser(@Valid @RequestBody AssignRoleToUserRequest req) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.assign.success"))
+                .data(userService.assignRoleToUser(req))
+                .build();
+    }
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseDto createRole(@Valid @RequestBody RoleCreationRequest request) {
+        return ResponseDto.builder()
+                .status(HttpStatus.CREATED.value())
+                .message(Translator.translate("role.create.success"))
+                .data(roleService.createRole(request))
+                .build();
+    }
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto updateRole(@Valid @RequestBody RoleUpdateRequest request) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.update.success"))
+                .data(roleService.updateRole(request))
+                .build();
+    }
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getRoleById(@PathVariable long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.get.success"))
+                .data(roleService.getRoleById(id))
+                .build();
+    }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getAllRoles(@RequestParam(defaultValue = "0") int pageNo,
+                                   @RequestParam(defaultValue = "10") int pageSize) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.get.all.success"))
+                .data(roleService.getAllRoles(pageNo, pageSize, false))
+                .build();
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto deleteRole(@PathVariable long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.delete.success"))
+                .data(roleService.deleteRole(id))
+                .build();
+    }
+
+    @GetMapping("/trash")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getAllDeletedRoles(@RequestParam(defaultValue = "0") int pageNo,
+                                          @RequestParam(defaultValue = "10") int pageSize) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.get.all.trash.success"))
+                .data(roleService.getAllRoles(pageNo, pageSize, true))
+                .build();
+    }
+    @PatchMapping("/restore/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto restoreRole(@PathVariable long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.restore.success"))
+                .data(roleService.restoreRole(id))
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/AssignRoleToPermissionRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class AssignRoleToPermissionRequest implements Serializable {
+    @NotNull(message = "error.validate.not-blank")
+    private Long roleId;
+
+    @NotNull(message = "error.validate.not-blank")
+    private Long[] permissionIds;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/AssignRoleToUserRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+
+import java.io.Serializable;
+import java.util.Set;
+
+@Getter
+public class AssignRoleToUserRequest implements Serializable {
+    @NotNull(message = "error.validate.not-blank")
+    private Long userId;
+    @NotNull(message = "error.validate.not-blank")
+    private Set<Long> roleIds;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/ForgotPasswordRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class ForgotPasswordRequest implements Serializable {
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email is invalid")
+    private String email;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/LoginRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
+import vn.edu.hcmuaf.fit.elearning.common.enums.Platform;
+
+import java.io.Serializable;
+
+@Getter
+public class LoginRequest implements Serializable {
+    @NotBlank(message = "email must be not blank")
+    private String email;
+    @NotBlank(message = "password must be not blank")
+    private String password;
+    @NotNull(message = "platform must be not null")
+    private Platform platform;
+    @NotBlank(message = "deviceToken must be not blank")
+    private String deviceToken;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/PermissionCreationRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import vn.edu.hcmuaf.fit.elearning.common.enums.HttpMethod;
+
+import java.io.Serializable;
+
+@Getter
+public class PermissionCreationRequest implements Serializable {
+    @NotNull(message = "error.validate.not-blank")
+    private HttpMethod method;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String path;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String description;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String module;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/PermissionUpdateRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import vn.edu.hcmuaf.fit.elearning.common.enums.HttpMethod;
+
+import java.io.Serializable;
+
+@Getter
+public class PermissionUpdateRequest implements Serializable {
+    @NotNull(message = "error.validate.not-blank")
+    private Long id;
+
+    @NotNull(message = "error.validate.not-blank")
+    private HttpMethod method;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String path;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String description;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String module;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/ResetPasswordRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class ResetPasswordRequest implements Serializable {
+    @NotBlank(message = "Email is required")
+    private String secretKey;
+    @NotBlank(message = "NewPassword is required")
+    private String newPassword;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/RoleCreationRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class RoleCreationRequest implements Serializable {
+    @NotBlank(message = "error.validate.not-blank")
+    private  String name;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private  String description;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/RoleUpdateRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class RoleUpdateRequest implements Serializable {
+    @NotNull(message = "error.validate.not-blank")
+    private Long id;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String name;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String description;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/req/SignupRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+@Getter
+public class SignupRequest implements Serializable {
+    @NotBlank(message = "error.validate.not-blank")
+    private String fullName;
+
+    @NotNull(message = "error.validate.not-blank")
+    private Gender gender;
+
+    @NotNull(message = "error.validate.not-blank")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate dateOfBirth;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String phoneNumber;
+
+    @NotBlank(message = "error.validate.not-blank")
+    @Email(message = "error.validate.invalid")
+    private String email;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String password;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/AuthResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res;
+
+import lombok.Builder;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Builder
+@Getter
+public class AuthResponse implements Serializable {
+    private String accessToken;
+    private String refreshToken;
+    private long userId;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/PermissionPageResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res;
+
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+import vn.edu.hcmuaf.fit.elearning.common.PageResponse;
+
+import java.util.List;
+
+@Getter
+@SuperBuilder
+public class PermissionPageResponse extends PageResponse {
+    private List<PermissionResponse> permissions;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/PermissionResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res;
+
+import lombok.Builder;
+import lombok.Getter;
+import vn.edu.hcmuaf.fit.elearning.common.enums.HttpMethod;
+
+import java.io.Serializable;
+
+@Getter
+@Builder
+public class PermissionResponse implements Serializable {
+    private Long id;
+    private HttpMethod method;
+    private String path;
+    private String description;
+    private String module;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/RolePageResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res;
+
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+import vn.edu.hcmuaf.fit.elearning.common.PageResponse;
+
+import java.util.List;
+
+@Getter
+@SuperBuilder
+public class RolePageResponse extends PageResponse {
+    private List<RoleResponse> roles;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/dto/res/RoleResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
+import java.util.List;
+
+@Getter
+@Setter
+@Builder
+public class RoleResponse implements Serializable {
+    private final long id;
+    private final String name;
+    private final String description;
+    private final List<PermissionResponse> permissions;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/entity/PermissionEntity.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
+import vn.edu.hcmuaf.fit.elearning.common.enums.HttpMethod;
+
+
+@Entity
+@Table(name = "tbl_permission")
+@Getter
+@Setter
+public class PermissionEntity extends BaseEntity {
+    @Column(name = "method", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private HttpMethod method;
+
+    @Column(name = "path", nullable = false)
+    private String path;
+
+    @Column(name = "description", length = 512)
+    private String description;
+
+    @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean isDeleted;
+
+    @Column(name = "module", length = 64)
+    private String module;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/entity/RedisTokenEntity.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.entity;
+
+
+import lombok.*;
+import org.springframework.data.redis.core.RedisHash;
+
+import java.io.Serializable;
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@RedisHash("RedisToken")
+public class RedisTokenEntity implements Serializable {
+    private String id;
+    private String accessToken;
+    private String refreshToken;
+    private String resetToken;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/entity/RoleEntity.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+
+@Entity
+@Table(name = "tbl_role")
+@Getter
+@Setter
+public class RoleEntity extends BaseEntity {
+    @Column(unique = true, nullable = false)
+    private String name;
+
+    @Column(length = 512)
+    private String description;
+
+    @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean isDeleted;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    Set<PermissionEntity> permissions = new HashSet<>();
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/repository/PermissionRepository.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.PermissionEntity;
+
+@Repository
+public interface PermissionRepository extends JpaRepository<PermissionEntity, Long> {
+    Page<PermissionEntity> findByIsDeleted(boolean isDeleted, Pageable pageable);
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/repository/RedisTokenRepository.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.repository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RedisTokenEntity;
+
+@Repository
+public interface RedisTokenRepository extends CrudRepository<RedisTokenEntity, String> {
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/repository/RoleRepository.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
+
+@Repository
+public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+    Page<RoleEntity> findAllByIsDeleted(boolean isDeleted, Pageable pageable);
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/AuthService.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service;
+
+import com.nimbusds.jose.JOSEException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ForgotPasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.LoginRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ResetPasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.SignupRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.AuthResponse;
+
+import java.text.ParseException;
+
+public interface AuthService {
+    AuthResponse authenticate(LoginRequest loginRequest) throws JOSEException;
+
+    long signup(SignupRequest signupRequest);
+
+    AuthResponse refreshToken(HttpServletRequest request) throws ParseException, JOSEException;
+
+    long forgotPassword(ForgotPasswordRequest req) throws JOSEException;
+
+    long resetPassword(ResetPasswordRequest request) throws ParseException, JOSEException;
+
+    String removeToken(HttpServletRequest request) throws ParseException;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/AuthServiceImpl.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service.impl;
+
+import com.nimbusds.jose.JOSEException;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import vn.edu.hcmuaf.fit.elearning.common.enums.TokenType;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
+import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ForgotPasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ResetPasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RedisTokenEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RedisTokenRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.AuthService;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.JwtService;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.LoginRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.SignupRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.AuthResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RedisTokenService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserRepository;
+
+import java.text.ParseException;
+
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
+public class AuthServiceImpl implements AuthService {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final RedisTokenService redisTokenService;
+    private final JwtService jwtService;
+
+    @Override
+    public AuthResponse authenticate(LoginRequest loginRequest) throws JOSEException {
+        UserEntity user = userRepository.findByEmail(loginRequest.getEmail())
+                .orElseThrow(()-> new BadCredentialsException(Translator.translate("auth.login.error")));
+
+        // Check if the user
+        if (user.isDeleted() || !passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+            throw new BadCredentialsException(Translator.translate("auth.login.error"));
+        }
+        // Check if the user is locked or inactive
+        if (user.getStatus() == UserStatus.INACTIVE) {
+            throw new BadCredentialsException(Translator.translate("auth.login.error.inactive"));
+        }
+        if (user.getStatus() == UserStatus.BLOCKED) {
+            throw new BadCredentialsException(Translator.translate("auth.login.error.locked"));
+        }
+
+        // generate token
+        String accessToken = jwtService.generateToken(user, TokenType.ACCESS_TOKEN);
+        String refreshToken = jwtService.generateToken(user, TokenType.REFRESH_TOKEN);
+        // save token to redis
+        RedisTokenEntity redisToken = RedisTokenEntity.builder()
+                .id(user.getEmail())
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
+        redisTokenService.saveToken(redisToken);
+        log.info("User {} logged in successfully", user.getEmail());
+
+        return AuthResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .userId(user.getId())
+                .build();
+    }
+
+    @Override
+    public long signup(SignupRequest signupRequest) {
+        log.info("Signing up {}", signupRequest.getEmail());
+
+        UserEntity user = new UserEntity();
+        user.setEmail(signupRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+        user.setFullName(signupRequest.getFullName());
+        user.setPhoneNumber(signupRequest.getPhoneNumber());
+        user.setGender(signupRequest.getGender());
+        user.setDateOfBirth(signupRequest.getDateOfBirth());
+        user.setStatus(UserStatus.INACTIVE);
+
+        userRepository.save(user);
+        log.info("User {} signed up successfully", signupRequest.getEmail());
+
+        return user.getId();
+    }
+
+    @Override
+    public AuthResponse refreshToken(HttpServletRequest request) throws ParseException, JOSEException {
+        //get token from request header
+        String token = request.getHeader("Referer");
+
+        //validate token
+        if (!StringUtils.hasLength(token)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+        if(!jwtService.validateToken(token, TokenType.REFRESH_TOKEN)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+
+        //get user from token
+        String email = jwtService.getEmailFromToken(token);
+
+        UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
+
+        //generate new token
+        String accessToken = jwtService.generateToken(user, TokenType.ACCESS_TOKEN);
+        String refreshToken = jwtService.generateToken(user, TokenType.REFRESH_TOKEN);
+
+        //check token in redis
+        RedisTokenEntity storedToken = redisTokenService.getToken(user.getEmail());
+        if (storedToken == null || !storedToken.getRefreshToken().equals(token)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+
+        //save token to redis
+        RedisTokenEntity redisToken = RedisTokenEntity.builder()
+                .id(user.getEmail())
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
+        redisTokenService.saveToken(redisToken);
+
+        return AuthResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .userId(user.getId())
+                .build();
+    }
+
+    @Override
+    public long forgotPassword(ForgotPasswordRequest req) throws JOSEException {
+        //get user by email
+        UserEntity user = userRepository.findByEmail(req.getEmail()).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
+        //generate token
+        String token = jwtService.generateToken(user, TokenType.RESET_TOKEN);
+
+        //save token to redis
+        RedisTokenEntity redisToken = RedisTokenEntity.builder()
+                .id(user.getEmail())
+                .resetToken(token)
+                .build();
+        redisTokenService.saveToken(redisToken);
+        //send email
+        String urlResetPassword = "http://localhost:8080/api/auth/reset-password?secretKey=" + token;
+
+        System.out.println("Reset password link: " + urlResetPassword);
+
+        return user.getId();
+    }
+
+    @Override
+    public long resetPassword(ResetPasswordRequest request) throws ParseException, JOSEException {
+        // check token
+        String token = request.getSecretKey();
+        if (!StringUtils.hasLength(token)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+        if(!jwtService.validateToken(token, TokenType.RESET_TOKEN)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+
+        //get user from token
+        String email = jwtService.getEmailFromToken(token);
+
+        //check token in redis
+        RedisTokenEntity storedToken = redisTokenService.getToken(email);
+        if (storedToken == null || !storedToken.getResetToken().equals(token)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+
+        log.info("Resetting password for user {}", email);
+        UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
+
+        //update password
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+        log.info("User {} reset password successfully", user.getEmail());
+        redisTokenService.deleteToken(email);
+        return user.getId();
+    }
+
+    @Override
+    public String removeToken(HttpServletRequest request) throws ParseException {
+        final String token = request.getHeader("Referer");
+        if (!StringUtils.hasLength(token)) {
+            throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
+        }
+
+        String email = jwtService.getEmailFromToken(token);
+
+        // delete token from redis
+        redisTokenService.deleteToken(email);
+        log.info("User {} logged out successfully", email);
+        return Translator.translate("auth.logout.success");
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/JwtServiceImpl.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service.impl;
+
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.common.enums.TokenType;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.JwtService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
+
+@Slf4j
+@Service
+public class JwtServiceImpl implements JwtService {
+
+    @Value("${jwt.secretAccessTokenKey}")
+    private String secretAccessTokenKey;
+    @Value("${jwt.secretRefreshTokenKey}")
+    private String secretRefreshTokenKey;
+    @Value("${jwt.secretResetTokenKey}")
+    private String secretResetTokenKey;
+    @Value("${jwt.accessTokenExpirationTime}")
+    private Long accessTokenExpirationTime;
+    @Value("${jwt.refreshTokenExpirationTime}")
+    private Long refreshTokenExpirationTime;
+    @Value("${jwt.resetTokenExpirationTime}")
+    private Long resetTokenExpirationTime;
+    @Value("${jwt.issuer}")
+    private String issuer;
+
+    @Override
+    public String generateToken(UserEntity user, TokenType type) throws JOSEException {
+        log.info("Generating JWT for user: {}", user.getEmail());
+        JWSHeader header = new JWSHeader(JWSAlgorithm.HS256);
+        // Set the token expiration time
+        Date expirationTime;
+        if (type == TokenType.ACCESS_TOKEN){
+            expirationTime = new Date(System.currentTimeMillis() + accessTokenExpirationTime * 1000 * 60);
+        } else if (type == TokenType.REFRESH_TOKEN) {
+            expirationTime = new Date(System.currentTimeMillis() + refreshTokenExpirationTime * 1000 * 60);
+        } else{
+            expirationTime = new Date(System.currentTimeMillis() + resetTokenExpirationTime * 1000 * 60);
+        }
+        JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
+                .subject(user.getEmail())
+                .issuer(issuer)
+                .issueTime(new Date())
+                .expirationTime(expirationTime)
+                .claim("roles", buildRoles(user))
+                .build();
+
+        // create payload
+        Payload payload = new Payload(claimsSet.toJSONObject());
+
+        // create JWT
+        JWSObject jwsObject = new JWSObject(header, payload);
+
+        // sign the JWT
+        String secretKey = type == TokenType.ACCESS_TOKEN ? secretAccessTokenKey : type == TokenType.REFRESH_TOKEN ? secretRefreshTokenKey : secretResetTokenKey;
+        jwsObject.sign(new MACSigner(secretKey));
+        // serialize the JWT to a string
+        return jwsObject.serialize();
+    }
+
+    @Override
+    public boolean validateToken(String token, TokenType type) throws JOSEException, ParseException {
+        byte[] secretKeyBytes;
+        if (type == TokenType.ACCESS_TOKEN) {
+            secretKeyBytes = secretAccessTokenKey.getBytes();
+        } else if (type == TokenType.REFRESH_TOKEN) {
+            secretKeyBytes = secretRefreshTokenKey.getBytes();
+        } else{
+            secretKeyBytes = secretResetTokenKey.getBytes();
+        }
+        JWSVerifier verifier = new MACVerifier(secretKeyBytes);
+        SignedJWT signedJWT = SignedJWT.parse(token);
+
+        Date expirationTime = signedJWT.getJWTClaimsSet().getExpirationTime();
+        // Check if the token is expired
+        return expirationTime != null && expirationTime.after(new Date()) &&
+                signedJWT.verify(verifier);
+    }
+
+    @Override
+    public String getEmailFromToken(String token) throws ParseException {
+        return SignedJWT.parse(token).getJWTClaimsSet().getSubject();
+    }
+
+    private List<String> buildRoles(UserEntity user){
+        return user.getRoles().stream().map(RoleEntity::getName).toList();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/PermissionServiceImpl.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service.impl;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionUpdateRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.PermissionEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.PermissionRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.PermissionService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+
+import java.util.List;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class PermissionServiceImpl implements PermissionService {
+    private final PermissionRepository permissionRepository;
+    @Override
+    public long createPermission(PermissionCreationRequest request) {
+        log.info("Create permission {}", request.getModule());
+        PermissionEntity entity = new PermissionEntity();
+        entity.setDescription(request.getDescription());
+        entity.setPath(request.getPath());
+        entity.setModule(request.getModule().toUpperCase());
+        entity.setMethod(request.getMethod());
+        entity.setIsDeleted(false);
+        // save to db
+        log.info("Permission created");
+        return permissionRepository.save(entity).getId();
+    }
+
+    @Override
+    public long updatePermission(PermissionUpdateRequest request) {
+        log.info("Update permission {}", request.getId());
+        PermissionEntity entity = findById(request.getId());
+        entity.setDescription(request.getDescription());
+        entity.setPath(request.getPath());
+        entity.setModule(request.getModule().toUpperCase());
+        entity.setMethod(request.getMethod());
+        // save to db
+        log.info("Permission updated");
+        return permissionRepository.save(entity).getId();
+    }
+
+    @Override
+    public long deletePermission(long id) {
+        PermissionEntity entity = findById(id);
+        log.info("Delete permission {}", entity.getModule());
+        entity.setIsDeleted(true);
+
+        permissionRepository.save(entity);
+        log.info("Permission {} deleted successfully", entity.getModule());
+        return entity.getId();
+    }
+
+    @Override
+    public PermissionResponse getPermissionById(long id) {
+        log.info("Get permission {}", id);
+        PermissionEntity entity = findById(id);
+        return convertToResponse(entity);
+    }
+
+    @Override
+    public PermissionPageResponse getAllPermissions(int pageNo, int pageSize, boolean isDeleted) {
+        int pageNoTemp = 0;
+        if(pageNo > 0){
+            pageNoTemp = pageNo -1;
+        }
+        //Pagging
+        Pageable pageable = PageRequest.of(pageNoTemp, pageSize);
+        Page<PermissionEntity> page = permissionRepository.findByIsDeleted(isDeleted, pageable);
+
+        List<PermissionResponse> permissions = page.getContent().stream()
+                .map(this::convertToResponse)
+                .toList();
+        return PermissionPageResponse.builder()
+                .pageNo(pageNo)
+                .pageSize(pageSize)
+                .totalPages(page.getTotalPages())
+                .totalElements(page.getTotalElements())
+                .permissions(permissions)
+                .build();
+    }
+
+    @Override
+    public long restorePermission(long id) {
+        PermissionEntity entity = findById(id);
+        log.info("Restore permission {}", entity.getModule());
+        entity.setIsDeleted(false);
+        permissionRepository.save(entity);
+        log.info("Permission {} restored successfully", entity.getModule());
+        return entity.getId();
+    }
+    private PermissionEntity findById(long id) {
+        return permissionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("permission.not-found")));
+    }
+    private PermissionResponse convertToResponse(PermissionEntity entity) {
+        return PermissionResponse.builder()
+                .id(entity.getId())
+                .description(entity.getDescription())
+                .path(entity.getPath())
+                .module(entity.getModule())
+                .method(entity.getMethod())
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/RedisTokenServiceImpl.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service.impl;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RedisTokenEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RedisTokenRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RedisTokenService;
+
+@Service
+@RequiredArgsConstructor
+public class RedisTokenServiceImpl implements RedisTokenService {
+    private final RedisTokenRepository redisTokenRepository;
+    @Override
+    public String saveToken(RedisTokenEntity token) {
+        return redisTokenRepository.save(token).getId();
+    }
+
+    @Override
+    public void deleteToken(String id) {
+        redisTokenRepository.deleteById(id);
+    }
+
+    @Override
+    public RedisTokenEntity getToken(String id) {
+        return redisTokenRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException(Translator.translate("auth.token.not_found")));
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/impl/RoleServiceImpl.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service.impl;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToPermissionRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleUpdateRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RolePageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.PermissionEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.PermissionRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RoleRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RoleService;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+
+@Service
+@RequiredArgsConstructor
+public class RoleServiceImpl implements RoleService {
+    private final RoleRepository roleRepository;
+    private final PermissionRepository permissionRepository;
+
+    @Override
+    public long createRole(RoleCreationRequest request) {
+        RoleEntity role = new RoleEntity();
+        role.setName(request.getName());
+        role.setDescription(request.getDescription());
+        role.setIsDeleted(false);
+
+        //save to db
+        return roleRepository.save(role).getId();
+    }
+
+    @Override
+    public long updateRole(RoleUpdateRequest request) {
+        //find role by id
+        RoleEntity role = getRoleEntityById(request.getId());
+        //update role
+        role.setName(request.getName());
+        role.setDescription(request.getDescription());
+        //save to db
+        roleRepository.save(role);
+        return role.getId();
+    }
+
+    @Override
+    public long deleteRole(long id) {
+        //find role by id
+        RoleEntity role = getRoleEntityById(id);
+        //update role
+        role.setIsDeleted(true);
+        //save to db
+        roleRepository.save(role);
+        return id;
+    }
+
+    @Override
+    public RoleResponse getRoleById(long id) {
+        RoleEntity role = getRoleEntityById(id);
+
+        return convertToResponse(role);
+    }
+
+    @Override
+    public RolePageResponse getAllRoles(int pageNo, int pageSize, boolean isDeleted) {
+        int pageNoTemp = 0;
+        if(pageNo > 0){
+            pageNoTemp = pageNo -1;
+        }
+
+        //Pagging
+        Pageable pageable = PageRequest.of(pageNoTemp, pageSize);
+        Page<RoleEntity> roleEntities = roleRepository.findAllByIsDeleted(isDeleted, pageable);
+        List<RoleResponse> responses = roleEntities.getContent().stream().map(this::convertToResponse).toList();
+        return RolePageResponse.builder()
+                .pageNo(pageNo)
+                .pageSize(pageSize)
+                .totalPages(roleEntities.getTotalPages())
+                .totalElements(roleEntities.getTotalElements())
+                .roles(responses)
+                .build();
+    }
+
+    @Override
+    public long restoreRole(long id) {
+        //find role by id
+        RoleEntity role = getRoleEntityById(id);
+        //update role
+        role.setIsDeleted(false);
+        //save to db
+        roleRepository.save(role);
+        return id;
+    }
+
+    @Override
+    public long assignRolePermission(AssignRoleToPermissionRequest req) {
+        //check
+        if(req.getPermissionIds() == null ){
+            throw new IllegalArgumentException(Translator.translate("role.permission.empty"));
+        }
+        // get role by id
+        RoleEntity role = getRoleEntityById(req.getRoleId());
+        // set permission is empty
+        role.setPermissions(Set.of());
+
+        // set permission
+        Set<PermissionEntity>  pers = new HashSet<>();
+        for(Long permissionId : req.getPermissionIds()){
+            PermissionEntity permission = permissionRepository.findById(permissionId).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("permission.not-found")));
+            pers.add(permission);
+        }
+        role.setPermissions(pers);
+        // save to db
+        roleRepository.save(role);
+        return role.getId();
+    }
+
+    private RoleEntity getRoleEntityById(long id) {
+        return roleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("role.not-found")));
+    }
+    private RoleResponse convertToResponse(RoleEntity role) {
+        return RoleResponse.builder()
+                .id(role.getId())
+                .name(role.getName())
+                .description(role.getDescription())
+                .permissions(role.getPermissions().stream().map(p -> {
+                    return PermissionResponse.builder()
+                            .id(p.getId())
+                            .method(p.getMethod())
+                            .path(p.getPath())
+                            .description(p.getDescription())
+                            .build();
+                }).toList())
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/JwtService.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service;
+
+import com.nimbusds.jose.JOSEException;
+import vn.edu.hcmuaf.fit.elearning.common.enums.TokenType;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+
+import java.text.ParseException;
+
+public interface JwtService {
+    String generateToken(UserEntity user, TokenType type) throws JOSEException;
+    boolean validateToken(String token, TokenType type) throws JOSEException, ParseException;
+
+    String getEmailFromToken(String token) throws ParseException;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/PermissionService.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service;
+
+import org.springframework.stereotype.Service;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionUpdateRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionResponse;
+
+public interface PermissionService {
+    long createPermission(PermissionCreationRequest request);
+    long updatePermission( PermissionUpdateRequest request);
+    long deletePermission(long id);
+    PermissionResponse getPermissionById(long id);
+    PermissionPageResponse getAllPermissions(int pageNo, int pageSize, boolean isDeleted);
+    long restorePermission(long id);
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/RedisTokenService.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service;
+
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RedisTokenEntity;
+
+public interface RedisTokenService {
+    String saveToken(RedisTokenEntity token);
+
+    void deleteToken(String id);
+
+    RedisTokenEntity getToken(String id);
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/auth/service/RoleService.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.auth.service;
+
+import jakarta.validation.Valid;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToPermissionRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleUpdateRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RolePageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
+
+public interface RoleService {
+    long createRole(RoleCreationRequest request);
+    long updateRole(RoleUpdateRequest request);
+    long deleteRole(long id);
+    RoleResponse getRoleById(long id);
+    RolePageResponse getAllRoles(int pageNo, int pageSize, boolean isDeleted);
+
+    long restoreRole(long id);
+
+    long assignRolePermission( AssignRoleToPermissionRequest req);
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/req/UserChangePasswordRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class UserChangePasswordRequest  implements Serializable {
+    @NotNull(message = "id must be not blank")
+    private Long id;
+    @NotBlank(message = "oldPassword must be not blank")
+    private String oldPassword;
+    @NotBlank(message = "newPassword must be not blank")
+    private String newPassword;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/req/UserCreationRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user.dto.req;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.ToString;
+import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
+import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+@Getter
+@ToString
+public class UserCreationRequest implements Serializable {
+    @NotBlank(message = "error.validate.not-blank")
+    private String fullName;
+
+    @NotNull(message = "error.validate.not-blank")
+    private Gender gender;
+
+    @NotNull(message = "error.validate.not-blank")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate dateOfBirth;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String phoneNumber;
+
+    @NotBlank(message = "error.validate.not-blank")
+    @Email(message = "error.validate.invalid")
+    private String email;
+
+    @NotBlank(message = "error.validate.not-blank")
+    private String password;
+
+    @NotNull(message = "error.validate.not-blank")
+    private UserStatus status;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/req/UserUpdateInfoRequest.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user.dto.req;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+@Getter
+public class UserUpdateInfoRequest implements Serializable {
+    @NotNull(message = "id must be not blank")
+    private Long id;
+    
+    @NotBlank(message = "fullName must be not blank")
+    private String fullName;
+
+    @NotNull(message = "gender must be not blank")
+    private Gender gender;
+
+    @NotNull(message = "dateOfBirth must be not blank")
+    private LocalDate dateOfBirth;
+
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/res/UserPageResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user.dto.res;
+
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+import vn.edu.hcmuaf.fit.elearning.common.PageResponse;
+
+import java.util.List;
+
+@Getter
+@SuperBuilder
+public class UserPageResponse extends PageResponse {
+    List<UserResponse> users;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/dto/res/UserResponse.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user.dto.res;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
+import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Getter
+@Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
+public class UserResponse implements Serializable {
+    private Long id;
+    private String fullName;
+    private Gender gender;
+    private LocalDate dateOfBirth;
+    private String phoneNumber;
+    private String email;
+    private UserStatus status;
+    private LocalDateTime lastLogin;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private List<RoleResponse> roles;
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/impl/UserServiceImpl.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user.impl;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RoleRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserResponse;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@Service
+@Slf4j(topic = "USER-SERVICE")
+@RequiredArgsConstructor
+public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
+
+    @Override
+    public long createUser(UserCreationRequest req) {
+        log.info("Creating user {}", req.getEmail());
+
+        UserEntity user = new UserEntity();
+        user.setEmail(req.getEmail());
+        user.setPassword(passwordEncoder.encode(req.getPassword()));
+        user.setFullName(req.getFullName());
+        user.setPhoneNumber(req.getPhoneNumber());
+        user.setGender(req.getGender());
+        user.setDateOfBirth(req.getDateOfBirth());
+        user.setStatus(req.getStatus());
+
+        userRepository.save(user);
+        log.info("User {} created successfully", req.getEmail());
+
+        return user.getId();
+    }
+
+    @Override
+    public UserResponse getUserById(Long id) {
+        UserEntity user = this.findUserById(id);
+        return this.convertToResponse(user);
+    }
+
+    @Override
+    public long updateUserInfoById(UserUpdateInfoRequest userUpdateRequest) {
+        log.info("Updating user {}", userUpdateRequest.getId());
+        UserEntity user = this.findUserById(userUpdateRequest.getId());
+
+        user.setFullName(userUpdateRequest.getFullName() != null ? userUpdateRequest.getFullName() : user.getFullName());
+        user.setGender(userUpdateRequest.getGender() != null ? userUpdateRequest.getGender() : user.getGender());
+        user.setDateOfBirth(userUpdateRequest.getDateOfBirth() != null ? userUpdateRequest.getDateOfBirth() : user.getDateOfBirth());
+
+        //save to db
+        userRepository.save(user);
+        log.info("User {} updated successfully", user.getId());
+        return user.getId();
+    }
+
+    @Override
+    public long changePassword(UserChangePasswordRequest userChangePasswordRequest) {
+        log.info("Changing password for user {}", userChangePasswordRequest.getId());
+        UserEntity user = this.findUserById(userChangePasswordRequest.getId());
+
+        if (!passwordEncoder.matches(userChangePasswordRequest.getOldPassword(), user.getPassword())) {
+            throw new IllegalArgumentException(Translator.translate("user.change-password.old-password-not-match"));
+        }
+        user.setPassword(passwordEncoder.encode(userChangePasswordRequest.getNewPassword()));
+        userRepository.save(user);
+        log.info("Password for user {} changed successfully", user.getId());
+        return user.getId();
+    }
+
+    @Override
+    public UserPageResponse getAllUsers(String keyword, String sort, int pageNo, int pageSize, boolean isDeleted) {
+        Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
+        //Sort
+        if(StringUtils.hasLength(sort)){
+            Pattern pattern = Pattern.compile("(\\w+?)(:)(.*)");//columName:asc|desc
+            Matcher matcher = pattern.matcher(sort);
+            if(matcher.find()){
+                String column = matcher.group(1);
+                if(matcher.group(3).equalsIgnoreCase("asc")){
+                    order = new Sort.Order(Sort.Direction.ASC, column);
+                }else {
+                    order = new Sort.Order(Sort.Direction.DESC, column);
+                }
+            }
+        }
+        int pageNoTemp = 0;
+        if(pageNo > 0){
+            pageNoTemp = pageNo -1;
+        }
+
+        //Pagging
+        Pageable pageable = PageRequest.of(pageNoTemp, pageSize, Sort.by(order));
+        Page<UserEntity> userPage;
+        if(StringUtils.hasLength(keyword)){
+            //call search method
+            keyword = "%"+keyword.toLowerCase()+"%";
+            userPage = userRepository.searchByKeyword(keyword, isDeleted, pageable);
+        }else{
+            userPage = userRepository.findByIsDeleted(isDeleted, pageable);
+        }
+
+        //Convert to response
+        List<UserResponse> userResponses = userPage.getContent().stream().map(this::convertToResponse).toList();
+        return UserPageResponse.builder()
+                .pageNo(pageNo)
+                .pageSize(pageSize)
+                .totalPages(userPage.getTotalPages())
+                .totalElements(userPage.getTotalElements())
+                .users(userResponses)
+                .build();
+    }
+
+    @Override
+    public long deleteUserById(Long id) {
+        UserEntity user = this.findUserById(id);
+        log.info("Deleting user {}", user.getEmail());
+        user.setDeleted(true);
+        userRepository.save(user);
+        log.info("User {} deleted successfully", user.getEmail());
+        return user.getId();
+    }
+
+    @Override
+    public long restoreUserById(Long id) {
+        UserEntity user = this.findUserById(id);
+        log.info("Restoring user {}", user.getEmail());
+        user.setDeleted(false);
+        userRepository.save(user);
+        log.info("User {} restored successfully", user.getEmail());
+        return user.getId();
+    }
+
+    @Override
+    public UserResponse getMe() {
+        log.info("Getting current user");
+        // Get the current user from the security context
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication.getPrincipal() == null) {
+            throw new ResourceNotFoundException(Translator.translate("user.not-found"));
+        }
+        String email = authentication.getName();
+        UserEntity userEntity = this.userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException(Translator.translate("user.not-found")));
+        log.info("User {} retrieved successfully", userEntity.getEmail());
+        return this.convertToResponse(userEntity);
+    }
+
+    @Override
+    public long assignRoleToUser(AssignRoleToUserRequest req) {
+        // get user by id
+        UserEntity user = this.findUserById(req.getUserId());
+        // check role ids
+        if(req.getRoleIds() == null ){
+            throw new IllegalArgumentException(Translator.translate("user.role-ids.empty"));
+        }
+
+        //set roles to empty
+        user.setRoles(Set.of());
+
+        Set<RoleEntity> roles = new HashSet<>();
+        for(Long roleId : req.getRoleIds()){
+            RoleEntity role = roleRepository.findById(roleId)
+                    .orElseThrow(() -> new ResourceNotFoundException(Translator.translate("role.not-found")));
+            roles.add(role);
+        }
+        // set roles to user
+        user.setRoles(roles);
+        userRepository.save(user);
+        log.info("User {} assigned roles successfully", user.getEmail());
+        return user.getId();
+    }
+
+    private UserEntity findUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
+    }
+    private UserResponse convertToResponse(UserEntity user) {
+        return UserResponse.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .fullName(user.getFullName())
+                .status(user.getStatus())
+                .createdAt(user.getCreatedAt())
+                .dateOfBirth(user.getDateOfBirth())
+                .gender(user.getGender())
+                .phoneNumber(user.getPhoneNumber())
+                .updatedAt(user.getUpdatedAt())
+                .roles(user.getRoles().stream().map(r -> RoleResponse.builder()
+                        .id(r.getId())
+                        .name(r.getName())
+                        .description(r.getDescription())
+                        .build()).toList())
+                .build();
+    }
+
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserController.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user;
+
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
+import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/api/v1/users")
+public class UserController {
+    private final UserService userService;
+
+    @GetMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getUser(@PathVariable("id") Long id){
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("user.get.success"))
+                .data(userService.getUserById(id))
+                .build();
+    }
+
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getAllUsers( @RequestParam(required = false) String keyword,
+                                    @RequestParam(required = false) String sort,
+                                    @RequestParam(defaultValue = "0") int pageNo,
+                                    @RequestParam(defaultValue = "10") int pageSize){
+        UserPageResponse users = userService.getAllUsers(keyword, sort, pageNo, pageSize, false);
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("user.get.all.success"))
+                .data(users)
+                .build();
+    }
+
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseDto createUser(@Valid @RequestBody UserCreationRequest req){
+        return ResponseDto.builder()
+                .status(HttpStatus.CREATED.value())
+                .message(Translator.translate("user.create.success"))
+                .data(userService.createUser(req))
+                .build();
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseDto updateUser( @Valid @RequestBody  UserUpdateInfoRequest userUpdateRequest) {
+        return ResponseDto.builder()
+                .status(HttpStatus.ACCEPTED.value())
+                .message(Translator.translate("user.update.success"))
+                .data(userService.updateUserInfoById(userUpdateRequest))
+                .build();
+    }
+
+    @PatchMapping("/change-pwd")
+    public ResponseDto changePassword(@Valid @RequestBody UserChangePasswordRequest userChangePasswordRequest) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("user.change-password.success"))
+                .data(userService.changePassword(userChangePasswordRequest))
+                .build();
+    }
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto deleteUser(@PathVariable("id") Long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("user.delete.success"))
+                .data(userService.deleteUserById(id))
+                .build();
+    }
+    @GetMapping("/trash")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto getAllDeletedUsers(@RequestParam(required = false) String keyword,
+                                          @RequestParam(required = false) String sort,
+                                          @RequestParam(defaultValue = "0") int pageNo,
+                                          @RequestParam(defaultValue = "10") int pageSize){
+        UserPageResponse users = userService.getAllUsers(keyword, sort, pageNo, pageSize, true);
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("user.get.trash.all.success"))
+                .data(users)
+                .build();
+    }
+    @PatchMapping("/restore/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto restoreUser(@PathVariable("id") Long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("user.restore.success"))
+                .data(userService.restoreUserById(id))
+                .build();
+    }
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserEntity.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user;
+
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
+import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
+import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "tbl_user")
+@Getter
+@Setter
+public class UserEntity extends BaseEntity {
+
+    @Column(name = "full_name", length = 255)
+    private String fullName;
+
+    @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Column(name = "date_of_birth")
+    @Temporal(TemporalType.DATE)
+    private LocalDate dateOfBirth;
+
+    @Column(name = "phone_number", length = 15, unique = true)
+    private String phoneNumber;
+
+    @Column(name = "email", unique = true, length = 255)
+    private String email;
+
+    @Column(name ="password", length = 255, nullable = false)
+    private String password;
+
+    @Column(name ="status")
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+
+    @Column(name = "avatar", length = 512)
+    private String avatar;
+
+    @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean isDeleted;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    Set<RoleEntity> roles = new HashSet<>();
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserRepository.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    @Query("select u " +
+            "from UserEntity u " +
+            "where u.isDeleted = :isDeleted and (lower(u.email)  like :keyword " +
+            "    or lower(u.fullName)  like :keyword " +
+            "    or lower(u.phoneNumber ) like :keyword )" )
+    Page<UserEntity> searchByKeyword(@Param("keyword")String keyword,@Param("isDeleted") boolean isDeleted, Pageable pageable);
+    Optional<UserEntity> findByEmail(String email);
+    Page<UserEntity> findByIsDeleted(boolean isDeleted, Pageable pageable);
+}
+
+================
+File: src/main/java/vn/edu/hcmuaf/fit/elearning/feature/user/UserService.java
+================
+package vn.edu.hcmuaf.fit.elearning.feature.user;
+
+import jakarta.validation.Valid;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserResponse;
+
+public interface UserService {
+    long createUser(UserCreationRequest req);
+
+    UserResponse getUserById(Long id);
+
+    long updateUserInfoById(UserUpdateInfoRequest userUpdateRequest);
+
+    long changePassword(UserChangePasswordRequest userChangePasswordRequest);
+
+    UserPageResponse getAllUsers(String keyword, String sort, int pageNo, int pageSize, boolean isDeleted);
+
+    long deleteUserById(Long id);
+
+    long restoreUserById(Long id);
+
+    UserResponse getMe();
+
+    long assignRoleToUser( AssignRoleToUserRequest req);
+}
+
+================
+File: src/main/resources/application-dev.yml
+================
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    add-properties: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/elearningdb
+    username: admin
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+#springdoc:
+#  api-docs:
+#    enabled: true
+#  swagger-ui:
+#    enabled: true
+
+#openapi:
+#  service:
+#    api-docs: backend-service
+#    server: http://localhost:${server.port}
+#    title: E-learning API Document
+#    version: 1.0.0
+
+jwt:
+  secretAccessTokenKey: b1mqrrj3ya825oq456pycrc12z49ronf
+  secretRefreshTokenKey: 24ot69benssf03jywqh05ym6v38hqm05
+  secretResetTokenKey: utb1cevvzlkqaz3z8y2ae7egpnzvy95v
+  accessTokenExpirationTime: 60 # 1 hour
+  refreshTokenExpirationTime: 10080 # 7 days
+  resetTokenExpirationTime: 10 # 10 minutes
+  issuer: E-learning
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+================
+File: src/main/resources/application-prod.yml
+================
+spring:
+  config:
+    activate:
+      on-profile: prod
+  devtools:
+    add-properties: true
+
+#springdoc:
+#  api-docs:
+#    enabled: false
+#  swagger-ui:
+#    enabled: false
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+================
+File: src/main/resources/application-test.yml
+================
+spring:
+  config:
+    activate:
+      on-profile: test
+  devtools:
+    add-properties: true
+
+#springdoc:
+#  api-docs:
+#    enabled: true
+#  swagger-ui:
+#    enabled: true
+#openapi:
+#  service:
+#    api-docs: backend-service
+#    server: ${BACKEND_SERVICE:http://localhost:${server.port}}
+#    title: E-learning API Document
+#    version: 1.0.0
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+================
+File: src/main/resources/application.yml
+================
+server:
+  port: 8080
+
+spring:
+  application:
+    name: e-learning-system-api
+  profiles:
+    active: @spring.profiles.active@
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#
+#logging:
+#  level:
+#    root: INFO
+#    web: INFO
+
+================
+File: src/main/resources/banner.txt
+================
+_____      _                          _                  ____            _
+ | ____|    | |    ___  __ _ _ __ _ __ (_)_ __   __ _     / ___| _   _ ___| |_ ___ _ __ ___
+ |  _| _____| |   / _ \/ _` | '__| '_ \| | '_ \ / _` |____\___ \| | | / __| __/ _ \ '_ ` _ \
+ | |__|_____| |__|  __/ (_| | |  | | | | | | | | (_| |_____|__) | |_| \__ \ ||  __/ | | | | |
+ |_____|    |_____\___|\__,_|_|  |_| |_|_|_| |_|\__, |    |____/ \__, |___/\__\___|_| |_| |_|
+                                                |___/            |___/
+${application.title} ${application.version}
+Powered by Spring Boot ${spring-boot.version}
+
+================
+File: src/main/resources/messages_vi.properties
+================
+#USER MESSAGES
+user.create.success=Tạo mới người dùng thành công.
+user.create.error=Tạo mới người dùng thất bại.
+user.update.success=Cập nhật người dùng thành công.
+user.update.error=Cập nhật người dùng thất bại.
+user.delete.success=Xoá người dùng thành công.
+user.delete.error=Xoá người dùng thất bại.
+user.not-found=Không tìm thấy người dùng.
+user.get.success=Lấy thông tin người dùng thành công.
+user.get.error=Lấy thông tin người dùng thất bại.
+user.get.all.success=Lấy danh sách người dùng thành công.
+user.change-password.success=Đổi mật khẩu thành công.
+user.change-password.old-password-not-match=Mật khẩu không chính xác.
+user.get.trash.all.success=Lấy danh sách người dùng trong thác thành công.
+user.restore.success=Khác phải người dùng thành công.
+auth.login.success=Đăng nhập thành công.
+auth.login.error=Email hoặc mật khẩu không chính xác.
+auth.login.error.inactive=Tài khoản chưa active.
+auth.login.error.locked=Tài khoản đã bị khoá.
+auth.signup.success=Đăng ký thành công.
+auth.me.success=Lấy thông tin người dùng thành công.
+auth.refresh.success=Lấy thông tin tìm kiếm thành công.
+auth.token.invalid=Token không hợp lệ
+auth.unauthorized=Không có quyền truy cập
+auth.token.type.invalid=Loại máy chưa đ ?ng nhập hoặc tìm kiếm.
+auth.reset-password.success=Khác phải mật khẩu thành công.
+auth.forgot-password.success=Gửi mật khẩu thành công.
+auth.logout.success=Đăng xuả thành công.
+auth.token.not_found=Máy chưa đ ?ng nhập hoặc tìm kiếm.
+error.argument.invalid=Tham số không hợp lệ.
+error.validate.not-blank=không được để trống.
+error.validate.invalid=không hợp lệ.
+error.duplicate=đã tồn tại.
+role.create.success=Tạo vai trợ thành công.
+role.not-found=Không tìm thấy vai trợ.
+role.update.success=Cập nhật vai trợ thành công.
+role.get.success=Lấy thông tin vai trợ thành công.
+role.get.all.success=Lấy danh sách vai trợ thành công.
+role.delete.success=Xoá vai trợ thành công.
+role.get.all.trash.success=Lấy danh sách vai trợ trong thác thành công.
+role.restore.success=Khác phải vai trợ thành công.
+permission.create.success=Tạo quyền thành công.
+permission.not-found=Không tìm thấy quyền.
+permission.update.success=Cập nhật quyền thành công.
+permission.get.success=Lấy thông tin quyền thành công.
+permission.get.all.success=Lấy danh sách quyền thành công.
+permission.get.all.trash.success=Lấy danh sách quyền trong thác thành công.
+permission.restore.success=Khôi phục quyền thành công.
+permission.delete.success=Xoá quyền thành công.
+user.role-ids.empty=Vai trợ không hợp lệ.
+role.assign.success=Gửi vai trợ thành công.
+role.permission.empty=Quyền không hợp lệ.
+
+================
+File: src/main/resources/messages.properties
+================
+#USER MESSAGES
+user.create.success=User created successfully.
+user.create.error=Failed to create user.
+user.update.success=User updated successfully.
+user.update.error=Failed to update user.
+user.delete.success=User deleted successfully.
+user.delete.error=Failed to delete user.
+user.not-found=User not found.
+user.get.success=User information retrieved successfully.
+user.get.all.error=Failed to retrieve user information.
+user.get.all.success=All users retrieved successfully.
+user.change-password.success=Password changed successfully.
+user.change-password.old-password-not-match=Old password does not match.
+user.get.trash.all.success=All users in trash retrieved successfully.
+user.restore.success=User restored successfully.
+auth.login.success=Login successful.
+auth.login.error=Email or password is incorrect.
+auth.login.error.inactive=Account is inactive.
+auth.login.error.locked=Account is locked.
+auth.signup.success=Sign up successful.
+auth.me.success=User information retrieved successfully.
+auth.refresh.success=Token refreshed successfully.
+auth.token.invalid=Token is invalid.
+auth.unauthorized=Unauthorized access.
+auth.token.type.invalid=Token type is invalid.
+auth.reset-password.success=Password reset successfully.
+auth.forgot-password.success=Password reset link sent to email.
+auth.logout.success=Logout successful.
+auth.token.not_found=Token not found.
+error.argument.invalid=Argument is invalid.
+error.validate.not-blank=must be not blank.
+error.validate.invalid=invalid.
+error.duplicate=already exists.
+role.create.success=Role created successfully.
+role.not-found=Role not found.
+role.update.success=Role updated successfully.
+role.get.success=Role retrieved successfully.
+role.get.all.success=All roles retrieved successfully.
+role.delete.success=Role deleted successfully.
+role.get.all.trash.success=All roles in trash retrieved successfully.
+role.restore.success=Role restored successfully.
+permission.create.success=Permission created successfully.
+permission.not-found=Permission not found.
+permission.update.success=Permission updated successfully.
+permission.get.success=Permission retrieved successfully.
+permission.get.all.success=All permissions retrieved successfully.
+permission.get.all.trash.success=All permissions in trash retrieved successfully.
+permission.restore.success=Permission restored successfully.
+permission.delete.success=Permission deleted successfully.
+user.role-ids.empty=Role IDs cannot be empty.
+role.assign.success=Role assigned successfully.
+role.permission.empty=Permission IDs cannot be empty.
+
+================
+File: src/test/java/vn/edu/hcmuaf/fit/elearning/ElearningApplicationTests.java
+================
+package vn.edu.hcmuaf.fit.elearning;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ElearningApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+
+================================================================
+End of Codebase
+================================================================

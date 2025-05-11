@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
@@ -14,17 +14,21 @@ import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.PermissionUpdateRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionPageResponse;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.PermissionResponse;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.PermissionEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.PermissionRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.PermissionService;
 import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
 
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class PermissionServiceImpl implements PermissionService {
     private final PermissionRepository permissionRepository;
+    private final RedisTemplate<String, Object> redisTemplate;
+    private static final String CACHE_KEY_PREFIX = "permissions:";
     @Override
     public long createPermission(PermissionCreationRequest request) {
         log.info("Create permission {}", request.getModule());
@@ -35,6 +39,7 @@ public class PermissionServiceImpl implements PermissionService {
         entity.setMethod(request.getMethod());
         entity.setIsDeleted(false);
         // save to db
+        invalidateCacheForRoles(entity.getRoles());
         log.info("Permission created");
         return permissionRepository.save(entity).getId();
     }
@@ -43,13 +48,16 @@ public class PermissionServiceImpl implements PermissionService {
     public long updatePermission(PermissionUpdateRequest request) {
         log.info("Update permission {}", request.getId());
         PermissionEntity entity = findById(request.getId());
+        Set<RoleEntity> oldRoles = entity.getRoles();
         entity.setDescription(request.getDescription());
         entity.setPath(request.getPath());
         entity.setModule(request.getModule().toUpperCase());
         entity.setMethod(request.getMethod());
-        // save to db
+        long id = permissionRepository.save(entity).getId();
+        invalidateCacheForRoles(oldRoles);
+        invalidateCacheForRoles(entity.getRoles());
         log.info("Permission updated");
-        return permissionRepository.save(entity).getId();
+        return id;
     }
 
     @Override
@@ -57,8 +65,8 @@ public class PermissionServiceImpl implements PermissionService {
         PermissionEntity entity = findById(id);
         log.info("Delete permission {}", entity.getModule());
         entity.setIsDeleted(true);
-
         permissionRepository.save(entity);
+        invalidateCacheForRoles(entity.getRoles());
         log.info("Permission {} deleted successfully", entity.getModule());
         return entity.getId();
     }
@@ -98,6 +106,7 @@ public class PermissionServiceImpl implements PermissionService {
         log.info("Restore permission {}", entity.getModule());
         entity.setIsDeleted(false);
         permissionRepository.save(entity);
+        invalidateCacheForRoles(entity.getRoles());
         log.info("Permission {} restored successfully", entity.getModule());
         return entity.getId();
     }
@@ -112,5 +121,14 @@ public class PermissionServiceImpl implements PermissionService {
                 .module(entity.getModule())
                 .method(entity.getMethod())
                 .build();
+    }
+    private void invalidateCacheForRoles(Set<RoleEntity> roles) {
+        if (roles != null) {
+            roles.forEach(role -> {
+                String cacheKey = CACHE_KEY_PREFIX + role.getName();
+                redisTemplate.delete(cacheKey);
+                log.debug("Invalidated cache for role: {}", role.getName());
+            });
+        }
     }
 }

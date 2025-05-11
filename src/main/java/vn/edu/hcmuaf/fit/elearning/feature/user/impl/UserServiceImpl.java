@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RoleRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.user.UserRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
@@ -22,7 +26,9 @@ import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
 import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserResponse;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +38,7 @@ import java.util.regex.Pattern;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
     @Override
     public long createUser(UserCreationRequest req) {
@@ -160,9 +167,33 @@ public class UserServiceImpl implements UserService {
         }
         String email = authentication.getName();
         UserEntity userEntity = this.userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException(Translator.translate("user.not-found")));
-
         log.info("User {} retrieved successfully", userEntity.getEmail());
         return this.convertToResponse(userEntity);
+    }
+
+    @Override
+    public long assignRoleToUser(AssignRoleToUserRequest req) {
+        // get user by id
+        UserEntity user = this.findUserById(req.getUserId());
+        // check role ids
+        if(req.getRoleIds() == null ){
+            throw new IllegalArgumentException(Translator.translate("user.role-ids.empty"));
+        }
+
+        //set roles to empty
+        user.setRoles(Set.of());
+
+        Set<RoleEntity> roles = new HashSet<>();
+        for(Long roleId : req.getRoleIds()){
+            RoleEntity role = roleRepository.findById(roleId)
+                    .orElseThrow(() -> new ResourceNotFoundException(Translator.translate("role.not-found")));
+            roles.add(role);
+        }
+        // set roles to user
+        user.setRoles(roles);
+        userRepository.save(user);
+        log.info("User {} assigned roles successfully", user.getEmail());
+        return user.getId();
     }
 
     private UserEntity findUserById(Long id) {
@@ -178,9 +209,13 @@ public class UserServiceImpl implements UserService {
                 .createdAt(user.getCreatedAt())
                 .dateOfBirth(user.getDateOfBirth())
                 .gender(user.getGender())
-                .lastLogin(user.getLastLogin())
                 .phoneNumber(user.getPhoneNumber())
                 .updatedAt(user.getUpdatedAt())
+                .roles(user.getRoles().stream().map(r -> RoleResponse.builder()
+                        .id(r.getId())
+                        .name(r.getName())
+                        .description(r.getDescription())
+                        .build()).toList())
                 .build();
     }
 

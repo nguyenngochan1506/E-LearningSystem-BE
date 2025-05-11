@@ -6,10 +6,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
 import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Builder
@@ -26,4 +28,5 @@ public class UserResponse implements Serializable {
     private LocalDateTime lastLogin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private List<RoleResponse> roles;
 }

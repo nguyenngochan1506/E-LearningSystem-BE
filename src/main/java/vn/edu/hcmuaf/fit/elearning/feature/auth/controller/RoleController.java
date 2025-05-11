@@ -6,15 +6,40 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToPermissionRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleCreationRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleUpdateRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RoleService;
+import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
 
 @RestController
 @RequestMapping("/api/v1/roles")
 @RequiredArgsConstructor
 public class RoleController {
     private final RoleService roleService;
+    private final UserService userService;
+
+
+    @PostMapping("/assign-permission")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto assignPermissionToRole(@Valid @RequestBody AssignRoleToPermissionRequest req) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.assign.success"))
+                .data(roleService.assignRolePermission(req))
+                .build();
+    }
+
+    @PostMapping("/assign-user")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseDto assignRoleToUser(@Valid @RequestBody AssignRoleToUserRequest req) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("role.assign.success"))
+                .data(userService.assignRoleToUser(req))
+                .build();
+    }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)

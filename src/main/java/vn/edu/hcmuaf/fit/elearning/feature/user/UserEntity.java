@@ -7,9 +7,12 @@ import lombok.Setter;
 import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
 import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
 import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
+import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_user")
@@ -47,7 +50,6 @@ public class UserEntity extends BaseEntity {
     @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean isDeleted;
 
-    @Column(name = "last_login")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime lastLogin;
+    @ManyToMany(fetch = FetchType.EAGER)
+    Set<RoleEntity> roles = new HashSet<>();
 }

@@ -6,7 +6,10 @@ spring:
     name: e-learning-system-api
   profiles:
     active: @spring.profiles.active@
-
+#  devtools:
+#    add-properties: true
+#    restart:
+#      enabled: false
 #management:
 #  endpoints:
 #    web:
