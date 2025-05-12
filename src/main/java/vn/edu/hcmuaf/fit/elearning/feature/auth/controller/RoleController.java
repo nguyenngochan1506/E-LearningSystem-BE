@@ -11,7 +11,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleCreationRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.RoleUpdateRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RoleService;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserService;
 
 @RestController
 @RequestMapping("/api/v1/roles")

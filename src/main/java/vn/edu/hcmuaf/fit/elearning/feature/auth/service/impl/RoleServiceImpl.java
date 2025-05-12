@@ -40,7 +40,7 @@ public class RoleServiceImpl implements RoleService {
         RoleEntity role = new RoleEntity();
         role.setName(request.getName());
         role.setDescription(request.getDescription());
-        role.setIsDeleted(false);
+        role.setDeleted(false);
 
         //save to db
         return roleRepository.save(role).getId();
@@ -64,7 +64,7 @@ public class RoleServiceImpl implements RoleService {
         //find role by id
         RoleEntity role = getRoleEntityById(id);
         //update role
-        role.setIsDeleted(true);
+        role.setDeleted(true);
         //save to db
         roleRepository.save(role);
         invalidateCacheForRole(role.getName());
@@ -103,7 +103,7 @@ public class RoleServiceImpl implements RoleService {
         //find role by id
         RoleEntity role = getRoleEntityById(id);
         //update role
-        role.setIsDeleted(false);
+        role.setDeleted(false);
         //save to db
         roleRepository.save(role);
         invalidateCacheForRole(role.getName());
@@ -142,14 +142,16 @@ public class RoleServiceImpl implements RoleService {
                 .id(role.getId())
                 .name(role.getName())
                 .description(role.getDescription())
-                .permissions(role.getPermissions().stream().map(p -> {
-                    return PermissionResponse.builder()
-                            .id(p.getId())
-                            .method(p.getMethod())
-                            .path(p.getPath())
-                            .description(p.getDescription())
-                            .build();
-                }).toList())
+                .permissions(role.getPermissions().stream().map(p ->(PermissionResponse) PermissionResponse.builder()
+                        .id(p.getId())
+                        .method(p.getMethod())
+                        .path(p.getPath())
+                        .description(p.getDescription())
+                        .createdBy(p.getCreatedBy())
+                        .createdAt(p.getCreatedAt())
+                        .updatedBy(p.getUpdatedBy())
+                        .updatedAt(p.getUpdatedAt())
+                        .build()).toList())
                 .build();
     }
     private void invalidateCacheForRole(String roleName) {

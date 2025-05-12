@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user.impl;
+package vn.edu.hcmuaf.fit.elearning.feature.users.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,14 +17,14 @@ import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RoleRepository;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserRepository;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserService;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserChangePasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserUpdateInfoRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserResponse;
 
 import java.util.HashSet;
 import java.util.List;
@@ -201,6 +201,15 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
     }
     private UserResponse convertToResponse(UserEntity user) {
+        List<RoleResponse> listRoles = user.getRoles().stream().map(r -> (RoleResponse)RoleResponse.builder()
+                .id(r.getId())
+                .name(r.getName())
+                .description(r.getDescription())
+                .createdAt(r.getCreatedAt())
+                .createdBy(r.getCreatedBy())
+                .updatedAt(r.getUpdatedAt())
+                .updatedBy(r.getUpdatedBy())
+                .build()).toList();
         return UserResponse.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -211,11 +220,7 @@ public class UserServiceImpl implements UserService {
                 .gender(user.getGender())
                 .phoneNumber(user.getPhoneNumber())
                 .updatedAt(user.getUpdatedAt())
-                .roles(user.getRoles().stream().map(r -> RoleResponse.builder()
-                        .id(r.getId())
-                        .name(r.getName())
-                        .description(r.getDescription())
-                        .build()).toList())
+                .roles(listRoles)
                 .build();
     }
 

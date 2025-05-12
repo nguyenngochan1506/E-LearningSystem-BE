@@ -15,15 +15,14 @@ import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ForgotPasswordRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ResetPasswordRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RedisTokenEntity;
-import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.RedisTokenRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.AuthService;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.JwtService;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.LoginRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.SignupRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.AuthResponse;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.RedisTokenService;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserRepository;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserRepository;
 
 import java.text.ParseException;
 

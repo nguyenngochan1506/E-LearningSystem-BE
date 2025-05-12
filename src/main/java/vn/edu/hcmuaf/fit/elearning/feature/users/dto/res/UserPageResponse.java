@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user.dto.res;
+package vn.edu.hcmuaf.fit.elearning.feature.users.dto.res;
 
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;

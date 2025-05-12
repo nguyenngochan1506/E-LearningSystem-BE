@@ -1,12 +1,11 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user;
+package vn.edu.hcmuaf.fit.elearning.feature.users;
 
-import jakarta.validation.Valid;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.AssignRoleToUserRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserChangePasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserUpdateInfoRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserResponse;
 
 public interface UserService {
     long createUser(UserCreationRequest req);

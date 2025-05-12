@@ -1,11 +1,12 @@
 package vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res;
 
-import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+import vn.edu.hcmuaf.fit.elearning.common.BaseResponse;
 
 import java.io.Serializable;
 
-@Builder
+@SuperBuilder
 @Getter
 public class AuthResponse implements Serializable {
     private String accessToken;

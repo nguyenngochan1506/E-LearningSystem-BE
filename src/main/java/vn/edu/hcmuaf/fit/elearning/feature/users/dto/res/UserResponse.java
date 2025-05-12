@@ -1,9 +1,8 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user.dto.res;
+package vn.edu.hcmuaf.fit.elearning.feature.users.dto.res;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+import vn.edu.hcmuaf.fit.elearning.common.BaseResponse;
 import vn.edu.hcmuaf.fit.elearning.common.enums.Gender;
 import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.res.RoleResponse;
@@ -14,10 +13,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-@Builder
-@RequiredArgsConstructor
-@AllArgsConstructor
-public class UserResponse implements Serializable {
+@SuperBuilder
+public class UserResponse extends BaseResponse {
     private Long id;
     private String fullName;
     private Gender gender;

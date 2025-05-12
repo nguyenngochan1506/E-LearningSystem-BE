@@ -104,6 +104,13 @@ public class PermissionFilter extends OncePerRequestFilter {
         if (permissionPath.endsWith("/**")) {
             String basePath = permissionPath.substring(0, permissionPath.length() - 3);
             return requestURI.startsWith(basePath);
+        }else if( permissionPath.indexOf(":") > 0){
+            String[] parts = permissionPath.split(":");
+            if (parts.length == 2) {
+                String basePath = parts[0];
+                String variablePart = parts[1];
+                return requestURI.startsWith(basePath);
+            }
         }
         return permissionPath.equals(requestURI);
     }

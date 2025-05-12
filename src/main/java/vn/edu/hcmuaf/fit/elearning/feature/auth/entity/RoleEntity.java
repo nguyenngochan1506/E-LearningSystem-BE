@@ -20,9 +20,6 @@ public class RoleEntity extends BaseEntity {
     @Column(length = 512)
     private String description;
 
-    @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private Boolean isDeleted;
-
     @ManyToMany(fetch = FetchType.LAZY)
     Set<PermissionEntity> permissions = new HashSet<>();
 }

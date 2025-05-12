@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user;
+package vn.edu.hcmuaf.fit.elearning.feature.users;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

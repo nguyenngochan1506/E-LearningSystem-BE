@@ -2,7 +2,7 @@ package vn.edu.hcmuaf.fit.elearning.feature.auth.service;
 
 import com.nimbusds.jose.JOSEException;
 import vn.edu.hcmuaf.fit.elearning.common.enums.TokenType;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
 
 import java.text.ParseException;
 

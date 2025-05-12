@@ -3,7 +3,6 @@ package vn.edu.hcmuaf.fit.elearning.feature.auth.controller;
 import com.nimbusds.jose.JOSEException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.LoginRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.ResetPasswordRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.dto.req.SignupRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.AuthService;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserService;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserService;
 
 import java.text.ParseException;
 

@@ -8,11 +8,10 @@ import com.nimbusds.jwt.SignedJWT;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.common.enums.TokenType;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.JwtService;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
 
 import java.text.ParseException;
 import java.util.Date;

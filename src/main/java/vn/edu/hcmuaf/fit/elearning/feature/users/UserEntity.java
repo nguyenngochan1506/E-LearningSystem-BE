@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user;
+package vn.edu.hcmuaf.fit.elearning.feature.users;
 
 
 import jakarta.persistence.*;
@@ -10,7 +10,6 @@ import vn.edu.hcmuaf.fit.elearning.common.enums.UserStatus;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,9 +45,6 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "avatar", length = 512)
     private String avatar;
-
-    @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private boolean isDeleted;
 
     @ManyToMany(fetch = FetchType.EAGER)
     Set<RoleEntity> roles = new HashSet<>();

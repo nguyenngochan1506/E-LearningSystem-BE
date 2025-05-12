@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user.dto.req;
+package vn.edu.hcmuaf.fit.elearning.feature.users.dto.req;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

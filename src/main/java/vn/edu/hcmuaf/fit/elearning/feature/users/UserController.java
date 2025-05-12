@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.elearning.feature.user;
+package vn.edu.hcmuaf.fit.elearning.feature.users;
 
 
 import jakarta.validation.Valid;
@@ -7,10 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserChangePasswordRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserCreationRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.req.UserUpdateInfoRequest;
-import vn.edu.hcmuaf.fit.elearning.feature.user.dto.res.UserPageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserChangePasswordRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserCreationRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.req.UserUpdateInfoRequest;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserPageResponse;
 
 @RequiredArgsConstructor
 @RestController

@@ -2,6 +2,8 @@ package vn.edu.hcmuaf.fit.elearning.feature.auth.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
 import vn.edu.hcmuaf.fit.elearning.common.enums.HttpMethod;
@@ -24,9 +26,6 @@ public class PermissionEntity extends BaseEntity {
 
     @Column(name = "description", length = 512)
     private String description;
-
-    @Column(name = "is_deleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private Boolean isDeleted;
 
     @Column(name = "module", length = 64)
     private String module;

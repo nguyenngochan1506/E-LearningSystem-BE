@@ -17,7 +17,6 @@ import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.PermissionEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.entity.RoleEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.repository.PermissionRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.auth.service.PermissionService;
-import vn.edu.hcmuaf.fit.elearning.feature.user.UserEntity;
 
 import java.util.List;
 import java.util.Set;
@@ -37,7 +36,7 @@ public class PermissionServiceImpl implements PermissionService {
         entity.setPath(request.getPath());
         entity.setModule(request.getModule().toUpperCase());
         entity.setMethod(request.getMethod());
-        entity.setIsDeleted(false);
+        entity.setDeleted(false);
         // save to db
         invalidateCacheForRoles(entity.getRoles());
         log.info("Permission created");
@@ -64,7 +63,7 @@ public class PermissionServiceImpl implements PermissionService {
     public long deletePermission(long id) {
         PermissionEntity entity = findById(id);
         log.info("Delete permission {}", entity.getModule());
-        entity.setIsDeleted(true);
+        entity.setDeleted(true);
         permissionRepository.save(entity);
         invalidateCacheForRoles(entity.getRoles());
         log.info("Permission {} deleted successfully", entity.getModule());
@@ -104,7 +103,7 @@ public class PermissionServiceImpl implements PermissionService {
     public long restorePermission(long id) {
         PermissionEntity entity = findById(id);
         log.info("Restore permission {}", entity.getModule());
-        entity.setIsDeleted(false);
+        entity.setDeleted(false);
         permissionRepository.save(entity);
         invalidateCacheForRoles(entity.getRoles());
         log.info("Permission {} restored successfully", entity.getModule());
@@ -120,6 +119,10 @@ public class PermissionServiceImpl implements PermissionService {
                 .path(entity.getPath())
                 .module(entity.getModule())
                 .method(entity.getMethod())
+                .createdAt(entity.getCreatedAt())
+                .createdBy(entity.getCreatedBy())
+                .updatedAt(entity.getUpdatedAt())
+                .updatedBy(entity.getUpdatedBy())
                 .build();
     }
     private void invalidateCacheForRoles(Set<RoleEntity> roles) {
