@@ -17,7 +17,7 @@ public class LessonEntity extends BaseEntity {
     private String content;
     @Column(name = "video_url", length = 500)
     private String videoUrl;
-    @Column(name = "file_url", length = 500)
+    @Column(name = "file_url", columnDefinition = "TEXT")
     private String fileUrl;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})

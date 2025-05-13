@@ -19,8 +19,8 @@ public class CourseEntity extends BaseEntity {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "thumbnail")
+    private String thumbnail;
     @Column(name = "price", columnDefinition = "FLOAT DEFAULT 0")
     private Double price;
     @Column(name = "is_published", columnDefinition = "BOOLEAN DEFAULT FALSE")
