@@ -30,6 +30,7 @@ public class LessonServiceImpl implements LessonService {
         lesson.setName(req.getName());
         lesson.setContent(req.getContent());
         lesson.setNumber(req.getNumber());
+        lesson.setDuration(req.getDuration());
 
         //check module
         ModuleEntity module = moduleService.findById(req.getModuleId());

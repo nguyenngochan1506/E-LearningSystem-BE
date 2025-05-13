@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
-import vn.edu.hcmuaf.fit.elearning.feature.file.dto.response.FilePageResponse;
 
 @RestController
 @RequestMapping("/api/v1/files")
@@ -39,7 +38,7 @@ public class FileController {
         return ResponseDto.builder()
                 .status(HttpStatus.OK.value())
                 .message(Translator.translate("file.delete.success"))
-                .data(fileService.deleteFile(fileName))
+                .data(fileService.deleteFileByFileName(fileName))
                 .build();
     }
 }

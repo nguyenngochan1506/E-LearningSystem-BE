@@ -25,4 +25,5 @@ public interface UserService {
     UserResponse getMe();
 
     long assignRoleToUser( AssignRoleToUserRequest req);
+    UserEntity findByEmail(String email);
 }

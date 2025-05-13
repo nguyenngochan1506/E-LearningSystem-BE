@@ -10,4 +10,6 @@ public interface FileRepository extends JpaRepository<FileEntity, Long> {
     Page<FileEntity> findByIsDeleted(boolean isDeleted, Pageable pageable);
 
     FileEntity findByName(String name);
+
+    FileEntity findByUrl(String url);
 }

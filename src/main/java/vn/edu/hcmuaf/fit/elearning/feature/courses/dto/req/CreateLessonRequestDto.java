@@ -20,6 +20,8 @@ public class CreateLessonRequestDto implements Serializable {
     @NotNull(message = "error.validate.not-blank")
     private Integer number;
     @NotNull(message = "error.validate.not-blank")
+    private Integer duration;
+    @NotNull(message = "error.validate.not-blank")
     private Long moduleId;
     private String videoUrl;
     private MultipartFile videoFile;

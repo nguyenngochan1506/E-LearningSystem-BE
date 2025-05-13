@@ -196,6 +196,11 @@ public class UserServiceImpl implements UserService {
         return user.getId();
     }
 
+    @Override
+    public UserEntity findByEmail(String email) {
+        return this.userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException(Translator.translate("user.not-found")));
+    }
+
     private UserEntity findUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));

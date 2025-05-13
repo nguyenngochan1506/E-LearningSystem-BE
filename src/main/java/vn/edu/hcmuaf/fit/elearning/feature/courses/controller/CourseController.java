@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.CreateCourseRequestDto;
+import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.UpdateCourseRequestDto;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.service.CourseService;
 
 @RestController
@@ -21,6 +22,15 @@ public class CourseController {
                 .status(HttpStatus.CREATED.value())
                 .message(Translator.translate("course.create.success"))
                 .data(courseService.createCourse(courseDto))
+                .build();
+    }
+
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseDto updateCourse(@ModelAttribute @Valid UpdateCourseRequestDto req) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("course.update.success"))
+                .data(courseService.updateCourse(req))
                 .build();
     }
 }

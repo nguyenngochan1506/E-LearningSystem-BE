@@ -15,9 +15,6 @@ import vn.edu.hcmuaf.fit.elearning.feature.file.FileRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.file.FileService;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.file.dto.response.FilePageResponse;
-import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
-import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserPageResponse;
-import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserResponse;
 
 import java.io.InputStream;
 import java.util.List;
@@ -85,7 +82,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public Long deleteFile(String fileName) {
+    public Long deleteFileByFileName(String fileName) {
         // Tìm tệp trong cơ sở dữ liệu
         FileEntity fileEntity = fileRepository.findByName(fileName);
         if (fileEntity != null) {
@@ -98,6 +95,20 @@ public class FileServiceImpl implements FileService {
         }
         return 0L;
     }
+
+    @Override
+    public Long deleteFileByUrl(String url) {
+        // Tìm tệp trong cơ sở dữ liệu
+        FileEntity fileEntity = fileRepository.findByUrl(url);
+        if (fileEntity != null) {
+            fileRepository.delete(fileEntity);
+            // Xóa tệp từ S3
+            deleteFileFromS3Bucket(fileEntity.getName());
+            return fileEntity.getId();
+        }
+        return 0L;
+    }
+
     private void deleteFileFromS3Bucket(String fileName) {
         try {
             // Xóa tệp từ S3

@@ -19,6 +19,8 @@ public class LessonEntity extends BaseEntity {
     private String videoUrl;
     @Column(name = "file_url", columnDefinition = "TEXT")
     private String fileUrl;
+    @Column(name = "duration")
+    private Integer duration;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "module_id", referencedColumnName = "id")
