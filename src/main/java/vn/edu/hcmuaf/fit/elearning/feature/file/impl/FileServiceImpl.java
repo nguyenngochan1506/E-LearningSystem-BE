@@ -15,6 +15,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.file.FileRepository;
 import vn.edu.hcmuaf.fit.elearning.feature.file.FileService;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import vn.edu.hcmuaf.fit.elearning.feature.file.dto.response.FilePageResponse;
+import vn.edu.hcmuaf.fit.elearning.feature.file.dto.response.FileResponseDto;
 
 import java.io.InputStream;
 import java.util.List;
@@ -72,13 +73,33 @@ public class FileServiceImpl implements FileService {
         Pageable pageable = PageRequest.of(pageNoTemp, pageSize, Sort.by(order));
         Page<FileEntity> fileEntityPage = fileRepository.findByIsDeleted(isDeleted, pageable);
 
+        List<FileResponseDto> files = fileEntityPage.getContent().stream()
+                .map(fileEntity -> FileResponseDto.builder()
+                        .id(fileEntity.getId())
+                        .fileName(fileEntity.getName())
+                        .fileUrl(fileEntity.getUrl())
+                        .size(fileEntity.getSize())
+                        .fileType(fileEntity.getType())
+                        .build())
+                .toList();
+
         return FilePageResponse.builder()
                 .pageNo(pageNo)
                 .pageSize(pageSize)
                 .totalPages(fileEntityPage.getTotalPages())
                 .totalElements(fileEntityPage.getTotalElements())
-                .files(fileEntityPage.stream().toList())
+                .files(files)
                 .build();
+    }
+
+    @Override
+    public FileEntity findById(Long id) {
+        return fileRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public FileEntity findByUrl(String url) {
+        return fileRepository.findByUrl(url);
     }
 
     @Override
@@ -106,7 +127,7 @@ public class FileServiceImpl implements FileService {
             deleteFileFromS3Bucket(fileEntity.getName());
             return fileEntity.getId();
         }
-        return 0L;
+        return null;
     }
 
     private void deleteFileFromS3Bucket(String fileName) {
