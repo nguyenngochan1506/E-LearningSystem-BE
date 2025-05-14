@@ -42,6 +42,8 @@ public class PermissionFilter extends OncePerRequestFilter {
         }
         String requestURI = request.getRequestURI();
         String method = request.getMethod();
+
+
          if (!hasPermission(authentication, requestURI, method)) {
              response.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission to access this resource");
              return;

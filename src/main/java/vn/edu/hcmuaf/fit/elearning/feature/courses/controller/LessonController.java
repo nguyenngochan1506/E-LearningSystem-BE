@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.elearning.feature.courses.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,11 +10,11 @@ import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.CreateLessonRequestDto;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.service.LessonService;
-import vn.edu.hcmuaf.fit.elearning.feature.courses.service.ModuleService;
 
 @RestController
 @RequestMapping("/api/v1/lessons")
 @RequiredArgsConstructor
+@Tag(name = "LESSON", description = "Lesson API")
 public class LessonController {
     private final LessonService lessonService;
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})

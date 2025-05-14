@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.elearning.feature.file;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import vn.edu.hcmuaf.fit.elearning.common.Translator;
 @RestController
 @RequestMapping("/api/v1/files")
 @RequiredArgsConstructor
+@Tag(name = "File", description = "File API")
 public class FileController {
     private final FileService fileService;
 

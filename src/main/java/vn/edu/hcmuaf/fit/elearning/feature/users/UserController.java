@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.elearning.feature.users;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserPageResponse;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/users")
+@Tag(name = "User", description = "User API")
 public class UserController {
     private final UserService userService;
 

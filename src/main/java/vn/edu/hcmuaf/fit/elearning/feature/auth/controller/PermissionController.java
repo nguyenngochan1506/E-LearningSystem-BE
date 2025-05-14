@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.elearning.feature.auth.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.auth.service.PermissionService;
 @RestController
 @RequestMapping("/api/v1/permissions")
 @RequiredArgsConstructor
+@Tag(name = "PERMISSION", description = "Permission API")
 public class PermissionController {
     private final PermissionService permissionService;
 

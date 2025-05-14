@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.elearning.feature.courses.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.courses.service.CourseService;
 @RestController
 @RequestMapping("/api/v1/courses")
 @RequiredArgsConstructor
+@Tag(name = "COURSE", description = "Course API")
 public class CourseController {
     private final CourseService courseService;
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

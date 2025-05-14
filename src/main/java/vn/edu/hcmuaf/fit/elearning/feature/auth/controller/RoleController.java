@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.elearning.feature.auth.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import vn.edu.hcmuaf.fit.elearning.feature.users.UserService;
 @RestController
 @RequestMapping("/api/v1/roles")
 @RequiredArgsConstructor
+@Tag(name = "ROLE", description = "Role API")
 public class RoleController {
     private final RoleService roleService;
     private final UserService userService;
