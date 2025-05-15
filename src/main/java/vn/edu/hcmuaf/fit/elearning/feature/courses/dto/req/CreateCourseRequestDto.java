@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +22,6 @@ public class CreateCourseRequestDto implements Serializable {
     private Boolean isPublished;
     @NotNull(message = "error.validate.not-blank")
     private MultipartFile thumbnail;
+    @NotNull(message = "error.validate.not-blank")
+    private Long categoryId;
 }

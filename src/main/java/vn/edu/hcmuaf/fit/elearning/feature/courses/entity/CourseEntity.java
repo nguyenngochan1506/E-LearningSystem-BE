@@ -32,4 +32,8 @@ public class CourseEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<ModuleEntity> modules = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private CategoryEntity category;
 }

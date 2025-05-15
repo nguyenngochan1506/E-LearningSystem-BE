@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.hcmuaf.fit.elearning.common.ResponseDto;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
@@ -26,7 +27,6 @@ public class CourseController {
                 .data(courseService.createCourse(courseDto))
                 .build();
     }
-
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseDto updateCourse(@ModelAttribute @Valid UpdateCourseRequestDto req) {
         return ResponseDto.builder()
