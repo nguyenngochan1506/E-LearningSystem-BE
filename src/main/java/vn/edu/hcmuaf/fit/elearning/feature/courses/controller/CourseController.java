@@ -19,6 +19,14 @@ import vn.edu.hcmuaf.fit.elearning.feature.courses.service.CourseService;
 @Tag(name = "COURSE", description = "Course API")
 public class CourseController {
     private final CourseService courseService;
+    @GetMapping("{id}")
+    public ResponseDto getCourse(@PathVariable Long id) {
+        return ResponseDto.builder()
+                .status(HttpStatus.OK.value())
+                .message(Translator.translate("course.get.success"))
+                .data(courseService.getCourse(id))
+                .build();
+    }
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseDto createCourse( @ModelAttribute @Valid CreateCourseRequestDto courseDto) {
         return ResponseDto.builder()

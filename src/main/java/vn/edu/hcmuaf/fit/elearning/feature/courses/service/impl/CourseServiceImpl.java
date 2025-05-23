@@ -9,6 +9,9 @@ import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.CreateCourseRequestDto;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.UpdateCourseRequestDto;
+import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.CourseResponseDto;
+import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.LessonResponseDto;
+import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.ModuleResponseDto;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.entity.CategoryEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.entity.CourseEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.repository.CourseRepository;
@@ -17,6 +20,9 @@ import vn.edu.hcmuaf.fit.elearning.feature.courses.service.CourseService;
 import vn.edu.hcmuaf.fit.elearning.feature.file.FileService;
 import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.users.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -84,5 +90,59 @@ public class CourseServiceImpl implements CourseService {
             course.setThumbnail(thumbnailUrl);
         }
         return courseRepository.save(course).getId();
+    }
+
+    @Override
+    public CourseResponseDto getCourse(Long id) {
+        CourseEntity course = this.findById(id);
+
+        return convertToResponse(course, true);
+    }
+    private CourseResponseDto convertToResponse(CourseEntity course, boolean attachLessons) {
+
+        List<ModuleResponseDto> modules = new ArrayList<>();
+        course.getModules().forEach(module -> {
+            List<LessonResponseDto> lessons = new ArrayList<>();
+            if(attachLessons){
+                module.getLessons().forEach(lesson -> {
+                    LessonResponseDto lessonResponseDto = LessonResponseDto.builder()
+                            .id(lesson.getId())
+                            .name(lesson.getName())
+                            .videoUrl(lesson.getVideoUrl())
+                            .content(lesson.getContent())
+                            .createdBy(lesson.getCreatedBy())
+                            .createdAt(lesson.getCreatedAt())
+                            .updatedBy(lesson.getUpdatedBy())
+                            .updatedAt(lesson.getUpdatedAt())
+                            .build();
+                    lessons.add(lessonResponseDto);
+                });
+            }
+            ModuleResponseDto moduleResponseDto = ModuleResponseDto.builder()
+                    .id(module.getId())
+                    .name(module.getName())
+                    .description(module.getDescription())
+                    .createdBy(module.getCreatedBy())
+                    .createdAt(module.getCreatedAt())
+                    .updatedBy(module.getUpdatedBy())
+                    .updatedAt(module.getUpdatedAt())
+                    .lessons(lessons)
+                    .build();
+            modules.add(moduleResponseDto);
+        });
+
+        return CourseResponseDto.builder()
+                .id(course.getId())
+                .name(course.getName())
+                .description(course.getDescription())
+                .price(course.getPrice())
+                .thumbnail(course.getThumbnail())
+                .isPublished(course.getIsPublished())
+                .modules(modules)
+                .createdAt(course.getCreatedAt())
+                .createdBy(course.getCreatedBy())
+                .updatedAt(course.getUpdatedAt())
+                .updatedBy(course.getUpdatedBy())
+                .build();
     }
 }

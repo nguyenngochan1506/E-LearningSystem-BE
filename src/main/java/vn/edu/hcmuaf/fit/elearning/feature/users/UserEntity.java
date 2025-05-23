@@ -46,6 +46,6 @@ public class UserEntity extends BaseEntity {
     @Column(name = "avatar", length = 512)
     private String avatar;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     Set<RoleEntity> roles = new HashSet<>();
 }

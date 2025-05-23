@@ -1,9 +1,10 @@
-package vn.edu.hcmuaf.fit.elearning.feature.courses.entity;
+package vn.edu.hcmuaf.fit.elearning.feature.assignment;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import vn.edu.hcmuaf.fit.elearning.common.BaseEntity;
+import vn.edu.hcmuaf.fit.elearning.feature.courses.entity.ModuleEntity;
 
 import java.util.HashSet;
 import java.util.Set;

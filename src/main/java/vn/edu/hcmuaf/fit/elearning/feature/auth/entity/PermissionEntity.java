@@ -16,6 +16,7 @@ import java.util.Set;
 @Table(name = "tbl_permission")
 @Getter
 @Setter
+@NoArgsConstructor
 public class PermissionEntity extends BaseEntity {
     @Column(name = "method", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -32,4 +33,11 @@ public class PermissionEntity extends BaseEntity {
 
     @ManyToMany(mappedBy = "permissions", fetch = FetchType.LAZY)
     private Set<RoleEntity> roles = new HashSet<>();
+
+    public PermissionEntity(HttpMethod httpMethod, String path, String description, String module) {
+        this.method = httpMethod;
+        this.path = path;
+        this.description = description;
+        this.module = module;
+    }
 }

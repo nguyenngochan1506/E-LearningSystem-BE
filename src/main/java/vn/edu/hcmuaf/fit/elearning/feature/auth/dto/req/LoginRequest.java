@@ -10,12 +10,12 @@ import java.io.Serializable;
 
 @Getter
 public class LoginRequest implements Serializable {
-    @NotBlank(message = "email must be not blank")
+    @NotBlank(message = "error.validate.not-blank")
     private String email;
-    @NotBlank(message = "password must be not blank")
+    @NotBlank(message = "error.validate.not-blank")
     private String password;
-    @NotNull(message = "platform must be not null")
+    @NotNull(message = "error.validate.not-blank")
     private Platform platform;
-    @NotBlank(message = "deviceToken must be not blank")
+    @NotBlank(message = "error.validate.not-blank")
     private String deviceToken;
 }

@@ -35,17 +35,24 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final RedisTokenService redisTokenService;
     private final JwtService jwtService;
-
+    /**
+     * Authenticates a user based on their email and password, returning access and refresh tokens.
+     *
+     * @param loginRequest The login request containing the user's email and password.
+     * @return An {@link AuthResponse} containing the access token, refresh token, and user ID.
+     * @throws JOSEException If there is an error generating JWT tokens.
+     * @throws BadCredentialsException If the credentials are invalid, the user is inactive, blocked, or deleted.
+     */
     @Override
     public AuthResponse authenticate(LoginRequest loginRequest) throws JOSEException {
+        // Retrieve user by email or throw an exception if not found
         UserEntity user = userRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(()-> new BadCredentialsException(Translator.translate("auth.login.error")));
 
-        // Check if the user
+        // Validate user credentials and account status
         if (user.isDeleted() || !passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
             throw new BadCredentialsException(Translator.translate("auth.login.error"));
         }
-        // Check if the user is locked or inactive
         if (user.getStatus() == UserStatus.INACTIVE) {
             throw new BadCredentialsException(Translator.translate("auth.login.error.inactive"));
         }
@@ -53,10 +60,10 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException(Translator.translate("auth.login.error.locked"));
         }
 
-        // generate token
+        //  Generate JWT access and refresh tokens
         String accessToken = jwtService.generateToken(user, TokenType.ACCESS_TOKEN);
         String refreshToken = jwtService.generateToken(user, TokenType.REFRESH_TOKEN);
-        // save token to redis
+        // Store tokens in Redis for session management
         RedisTokenEntity redisToken = RedisTokenEntity.builder()
                 .id(user.getEmail())
                 .accessToken(accessToken)
@@ -72,10 +79,18 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    /**
+     * Registers a new user with the provided details and sets their initial status to inactive.
+     *
+     * @param signupRequest The signup request containing user details (email, password, full name, etc.).
+     * @return The ID of the newly created user.
+     * @throws DataIntegrityViolationException If the email already exists or other database constraints are violated.
+     */
     @Override
     public long signup(SignupRequest signupRequest) {
         log.info("Signing up {}", signupRequest.getEmail());
 
+        // Create new user entity with provided details
         UserEntity user = new UserEntity();
         user.setEmail(signupRequest.getEmail());
         user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
@@ -83,7 +98,7 @@ public class AuthServiceImpl implements AuthService {
         user.setPhoneNumber(signupRequest.getPhoneNumber());
         user.setGender(signupRequest.getGender());
         user.setDateOfBirth(signupRequest.getDateOfBirth());
-        user.setStatus(UserStatus.INACTIVE);
+        user.setStatus(UserStatus.INACTIVE);// Set to inactive pending activation
 
         userRepository.save(user);
         log.info("User {} signed up successfully", signupRequest.getEmail());
@@ -91,9 +106,19 @@ public class AuthServiceImpl implements AuthService {
         return user.getId();
     }
 
+    /**
+     * Refreshes the access and refresh tokens using a valid refresh token from the request header.
+     *
+     * @param request The HTTP request containing the refresh token in the "Referer" header.
+     * @return An {@link AuthResponse} containing new access token, refresh token, and user ID.
+     * @throws ParseException If the token cannot be parsed.
+     * @throws JOSEException If there is an error generating new JWT tokens.
+     * @throws BadCredentialsException If the token is invalid or does not match the stored token.
+     * @throws ResourceNotFoundException If the user associated with the token is not found.
+     */
     @Override
     public AuthResponse refreshToken(HttpServletRequest request) throws ParseException, JOSEException {
-        //get token from request header
+        //Extract refresh token from Referer header (non-standard, used for specific client compatibility)
         String token = request.getHeader("Referer");
 
         //validate token
@@ -104,22 +129,22 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
         }
 
-        //get user from token
+        //Retrieve user associated with the token
         String email = jwtService.getEmailFromToken(token);
 
         UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
 
-        //generate new token
+        //Generate new access and refresh tokens
         String accessToken = jwtService.generateToken(user, TokenType.ACCESS_TOKEN);
         String refreshToken = jwtService.generateToken(user, TokenType.REFRESH_TOKEN);
 
-        //check token in redis
+        //Verify token against Redis store
         RedisTokenEntity storedToken = redisTokenService.getToken(user.getEmail());
         if (storedToken == null || !storedToken.getRefreshToken().equals(token)) {
             throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
         }
 
-        //save token to redis
+        //Store new tokens in Redis for session management
         RedisTokenEntity redisToken = RedisTokenEntity.builder()
                 .id(user.getEmail())
                 .accessToken(accessToken)
@@ -134,11 +159,19 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
+    /**
+     * Initiates the password reset process by generating a reset token and storing it in Redis.
+     *
+     * @param req The request containing the user's email.
+     * @return The ID of the user requesting the password reset.
+     * @throws JOSEException If there is an error generating the reset token.
+     * @throws ResourceNotFoundException If the user with the provided email is not found.
+     */
     @Override
     public long forgotPassword(ForgotPasswordRequest req) throws JOSEException {
-        //get user by email
+        //Retrieve user by email
         UserEntity user = userRepository.findByEmail(req.getEmail()).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
-        //generate token
+        // Generate password reset token
         String token = jwtService.generateToken(user, TokenType.RESET_TOKEN);
 
         //save token to redis
@@ -147,17 +180,26 @@ public class AuthServiceImpl implements AuthService {
                 .resetToken(token)
                 .build();
         redisTokenService.saveToken(redisToken);
-        //send email
+        // TODO: Replace with actual email service to send reset link
         String urlResetPassword = "http://localhost:8080/api/auth/reset-password?secretKey=" + token;
 
         System.out.println("Reset password link: " + urlResetPassword);
 
         return user.getId();
     }
-
+    /**
+     * Resets the user's password using a valid reset token.
+     *
+     * @param request The request containing the reset token and new password.
+     * @return The ID of the user whose password was reset.
+     * @throws ParseException If the token cannot be parsed.
+     * @throws JOSEException If there is an error processing the token.
+     * @throws BadCredentialsException If the token is invalid or does not match the stored token.
+     * @throws ResourceNotFoundException If the user associated with the token is not found.
+     */
     @Override
     public long resetPassword(ResetPasswordRequest request) throws ParseException, JOSEException {
-        // check token
+        // Validate reset token presence and type
         String token = request.getSecretKey();
         if (!StringUtils.hasLength(token)) {
             throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
@@ -166,10 +208,10 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
         }
 
-        //get user from token
+        //Retrieve user associated with the token
         String email = jwtService.getEmailFromToken(token);
 
-        //check token in redis
+        //Verify token against Redis store
         RedisTokenEntity storedToken = redisTokenService.getToken(email);
         if (storedToken == null || !storedToken.getResetToken().equals(token)) {
             throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
@@ -178,24 +220,34 @@ public class AuthServiceImpl implements AuthService {
         log.info("Resetting password for user {}", email);
         UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException(Translator.translate("user.not-found")));
 
-        //update password
+        //Update password and log the event
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         userRepository.save(user);
         log.info("User {} reset password successfully", user.getEmail());
+
+        // Remove reset token from Redis to prevent reuse
         redisTokenService.deleteToken(email);
         return user.getId();
     }
-
+    /**
+     * Logs out a user by removing their tokens from Redis.
+     *
+     * @param request The HTTP request containing the token in the "Referer" header.
+     * @return A success message indicating logout completion.
+     * @throws ParseException If the token cannot be parsed.
+     * @throws BadCredentialsException If the token is invalid or missing.
+     */
     @Override
     public String removeToken(HttpServletRequest request) throws ParseException {
+        // Extract token from Referer header (non-standard, used for specific client compatibility)
         final String token = request.getHeader("Referer");
         if (!StringUtils.hasLength(token)) {
             throw new BadCredentialsException(Translator.translate("auth.token.invalid"));
         }
-
+        // Retrieve user email from token
         String email = jwtService.getEmailFromToken(token);
 
-        // delete token from redis
+        // Remove tokens from Redis to invalidate session
         redisTokenService.deleteToken(email);
         log.info("User {} logged out successfully", email);
         return Translator.translate("auth.logout.success");

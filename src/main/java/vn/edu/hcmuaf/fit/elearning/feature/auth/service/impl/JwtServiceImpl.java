@@ -36,11 +36,22 @@ public class JwtServiceImpl implements JwtService {
     @Value("${jwt.issuer}")
     private String issuer;
 
+    /**
+     * Generates a JWT token for a user with the specified token type (access, refresh, or reset).
+     *
+     * @param user The user entity for whom the token is generated.
+     * @param type The type of token to generate (ACCESS_TOKEN, REFRESH_TOKEN, or RESET_TOKEN).
+     * @return A signed JWT token as a string.
+     * @throws JOSEException If there is an error during token signing or creation.
+     */
     @Override
     public String generateToken(UserEntity user, TokenType type) throws JOSEException {
         log.info("Generating JWT for user: {}", user.getEmail());
+
+        // Configure JWT header with HS256 algorithm for secure signing
         JWSHeader header = new JWSHeader(JWSAlgorithm.HS256);
-        // Set the token expiration time
+
+        // Set expiration time based on token type
         Date expirationTime;
         if (type == TokenType.ACCESS_TOKEN){
             expirationTime = new Date(System.currentTimeMillis() + accessTokenExpirationTime * 1000 * 60);
@@ -49,6 +60,7 @@ public class JwtServiceImpl implements JwtService {
         } else{
             expirationTime = new Date(System.currentTimeMillis() + resetTokenExpirationTime * 1000 * 60);
         }
+        //Build JWT claims with user details and roles
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .subject(user.getEmail())
                 .issuer(issuer)
@@ -63,13 +75,21 @@ public class JwtServiceImpl implements JwtService {
         // create JWT
         JWSObject jwsObject = new JWSObject(header, payload);
 
-        // sign the JWT
+        // Create and sign JWT with appropriate secret key
         String secretKey = type == TokenType.ACCESS_TOKEN ? secretAccessTokenKey : type == TokenType.REFRESH_TOKEN ? secretRefreshTokenKey : secretResetTokenKey;
         jwsObject.sign(new MACSigner(secretKey));
         // serialize the JWT to a string
         return jwsObject.serialize();
     }
-
+    /**
+     * Validates a JWT token by checking its signature and expiration.
+     *
+     * @param token The JWT token to validate.
+     * @param type  The expected type of token (ACCESS_TOKEN, REFRESH_TOKEN, or RESET_TOKEN).
+     * @return True if the token is valid and not expired, false otherwise.
+     * @throws JOSEException   If there is an error verifying the token signature.
+     * @throws ParseException If the token cannot be parsed.
+     */
     @Override
     public boolean validateToken(String token, TokenType type) throws JOSEException, ParseException {
         byte[] secretKeyBytes;
@@ -89,12 +109,26 @@ public class JwtServiceImpl implements JwtService {
                 signedJWT.verify(verifier);
     }
 
+    /**
+     * Extracts the email (subject) from a JWT token.
+     * 
+     * @param token The JWT token.
+     * @return The email (subject) extracted from the token.
+     * @throws ParseException If the token cannot be parsed.
+     */
     @Override
     public String getEmailFromToken(String token) throws ParseException {
         return SignedJWT.parse(token).getJWTClaimsSet().getSubject();
     }
 
-    private List<String> buildRoles(UserEntity user){
+    /**
+     * Builds a list of role names from the user's roles.
+     * 
+     * @param user The user entity.
+     * @return A list of role names.
+     */
+    private List<String> buildRoles(UserEntity user) {
+        // Map each RoleEntity to its name and collect into a list
         return user.getRoles().stream().map(RoleEntity::getName).toList();
     }
 }
