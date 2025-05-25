@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import vn.edu.hcmuaf.fit.elearning.common.Translator;
@@ -84,7 +85,7 @@ public class PermissionServiceImpl implements PermissionService {
             pageNoTemp = pageNo -1;
         }
         //Pagging
-        Pageable pageable = PageRequest.of(pageNoTemp, pageSize);
+        Pageable pageable = PageRequest.of(pageNoTemp, pageSize, Sort.by(Sort.Direction.ASC, "module", "createdAt"));
         Page<PermissionEntity> page = permissionRepository.findByIsDeleted(isDeleted, pageable);
 
         List<PermissionResponse> permissions = page.getContent().stream()
