@@ -2,6 +2,10 @@ package vn.edu.hcmuaf.fit.elearning.feature.courses.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -9,9 +13,7 @@ import vn.edu.hcmuaf.fit.elearning.common.Translator;
 import vn.edu.hcmuaf.fit.elearning.exception.ResourceNotFoundException;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.CreateCourseRequestDto;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.req.UpdateCourseRequestDto;
-import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.CourseResponseDto;
-import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.LessonResponseDto;
-import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.ModuleResponseDto;
+import vn.edu.hcmuaf.fit.elearning.feature.courses.dto.res.*;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.entity.CategoryEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.entity.CourseEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.courses.repository.CourseRepository;
@@ -20,9 +22,12 @@ import vn.edu.hcmuaf.fit.elearning.feature.courses.service.CourseService;
 import vn.edu.hcmuaf.fit.elearning.feature.file.FileService;
 import vn.edu.hcmuaf.fit.elearning.feature.users.UserEntity;
 import vn.edu.hcmuaf.fit.elearning.feature.users.UserService;
+import vn.edu.hcmuaf.fit.elearning.feature.users.dto.res.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @Slf4j
@@ -98,6 +103,78 @@ public class CourseServiceImpl implements CourseService {
 
         return convertToResponse(course, true);
     }
+
+    @Override
+    public CoursePageResponse getCourses(String sort, Integer pageNo, Integer pageSize, Long categoryId) {
+        log.info("Fetching courses with sort: {}, pageNo: {}, pageSize: {}, categoryId: {}",
+                sort, pageNo, pageSize, categoryId);
+
+        // Xử lý sắp xếp
+        Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
+        if (sort != null && !sort.isEmpty()) {
+            Pattern pattern = Pattern.compile("(\\w+?)(:)(asc|desc)", Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(sort);
+            if (matcher.find()) {
+                String column = matcher.group(1);
+                String direction = matcher.group(3);
+                order = new Sort.Order(
+                        direction.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC,
+                        column
+                );
+            }
+        }
+
+        // Xử lý phân trang
+        int pageNoTemp = pageNo > 0 ? pageNo - 1 : 0;
+        Pageable pageable = PageRequest.of(pageNoTemp, pageSize, Sort.by(order));
+
+        // Truy vấn khóa học
+        Page<CourseEntity> coursePage;
+        if (categoryId != null) {
+            categoryService.findById(categoryId);
+            coursePage = courseRepository.findByCategoryIdAndIsPublishedAndIsDeleted(
+                    categoryId, true, false, pageable
+            );
+        } else {
+            coursePage = courseRepository.findByIsPublishedAndIsDeleted(true, false, pageable);
+        }
+
+        // Chuyển đổi sang DTO
+        List<?> courses = coursePage.getContent().stream()
+                .map(course -> CourseResponseDto.builder()
+                        .id(course.getId())
+                        .name(course.getName())
+                        .description(course.getDescription())
+                        .price(course.getPrice())
+                        .thumbnail(course.getThumbnail())
+                        .category(course.getCategory() != null
+                                ? CategoryResponseDto.builder()
+                                .id(course.getCategory().getId())
+                                .name(course.getCategory().getName())
+                                .build()
+                                : null)
+                        .teacher(course.getTeacher() != null
+                                ? UserResponse.builder()
+                                .id(course.getTeacher().getId())
+                                .fullName(course.getTeacher().getFullName())
+                                .build()
+                                : null)
+                        .createdAt(course.getCreatedAt())
+                        .updatedAt(course.getUpdatedAt())
+                        .build()
+                )
+                .toList();
+
+        // Trả về CoursePageResponse
+        return CoursePageResponse.builder()
+                .pageNo(pageNo)
+                .pageSize(pageSize)
+                .totalElements(coursePage.getTotalElements())
+                .totalPages(coursePage.getTotalPages())
+                .courses((List<CourseResponseDto>) courses)
+                .build();
+    }
+
     private CourseResponseDto convertToResponse(CourseEntity course, boolean attachLessons) {
 
         List<ModuleResponseDto> modules = new ArrayList<>();

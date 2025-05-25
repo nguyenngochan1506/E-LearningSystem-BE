@@ -40,7 +40,7 @@ public class SecurityConfig {
             "/api/auth/refresh",
             "/api/auth/forgot-password",
             "/api/auth/reset-password",
-            "/api/auth/logout",
+            "/api/auth/logout"
     };
 
     @Bean
@@ -51,6 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(WHITELIST_URLS).permitAll()
                             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Cho phép tất cả OPTIONS
+                            .requestMatchers(HttpMethod.GET,  "/api/v1/courses").permitAll()
                             .anyRequest().authenticated();
                 })
                 .addFilterAfter(permissionFilter, BearerTokenAuthenticationFilter.class)

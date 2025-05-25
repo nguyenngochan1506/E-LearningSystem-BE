@@ -75,6 +75,7 @@ public class SeedingData implements CommandLineRunner {
                     new PermissionEntity(HttpMethod.PUT, "/api/v1/courses", "Update all courses", "Course"),
                     new PermissionEntity(HttpMethod.POST, "/api/v1/courses", "Create a course", "Course"),
                     new PermissionEntity(HttpMethod.GET, "/api/v1/courses/:id", "Get a course by id", "Course"),
+                    new PermissionEntity(HttpMethod.GET," /api/v1/courses", "Get all courses", "Course"),
 
                     // Role API
                     new PermissionEntity(HttpMethod.GET, "/api/v1/roles", "Get all roles", "Role"),
